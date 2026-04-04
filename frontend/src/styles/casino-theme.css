@@ -1,0 +1,480 @@
+/* CASINO THEME - Optimized for Responsive Design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap');
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --casino-gold: #ffcc00; /* Vàng rực rỡ hơn */
+  --casino-gold-light: #ffea00;
+  --casino-gold-dark: #cc9900;
+  --casino-orange: #ff6a00; /* Cam rực rỡ */
+  --casino-red: #ff3300;
+  --dark-bg: #0f0f1a; /* Nền tối hơn để tương phản */
+  --darker-bg: #1a1a2e;
+  --nav-bg: #0a0a0f;
+  --card-bg: rgba(30, 30, 45, 0.95); /* Thẻ đậm hơn, ít trong suốt hơn để rõ nét */
+  --text-light: #ffffff;
+  --text-gray: #a0a0b0;
+  --text-dim: #6b6b7b;
+  
+  /* Spacing Variables */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Container Widths */
+  --container-max-width: 1200px;
+}
+
+/* ===== BASE STYLES ===== */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.casino-body {
+  background: radial-gradient(circle at top, var(--darker-bg) 0%, var(--dark-bg) 100%);
+  color: var(--text-light);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}
+
+/* ===== GLOW EFFECTS ===== */
+.glow-text {
+  animation: glow 1.5s ease-in-out infinite alternate;
+  color: var(--text-light);
+  text-shadow: 
+    0 0 5px var(--casino-gold),
+    0 0 10px var(--casino-gold),
+    0 0 15px var(--casino-orange);
+  font-weight: 700;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 
+      0 0 5px var(--casino-gold),
+      0 0 10px var(--casino-gold);
+  }
+  100% {
+    text-shadow: 
+      0 0 10px var(--casino-gold),
+      0 0 20px var(--casino-orange),
+      0 0 30px var(--casino-red);
+  }
+}
+
+/* ===== NAVIGATION ===== */
+.casino-nav {
+  background-color: var(--nav-bg);
+  border-bottom: 2px solid var(--casino-gold);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.casino-nav .nav-link {
+  color: var(--casino-gold) !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 12px !important;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+}
+
+@media (min-width: 992px) {
+  .casino-nav .nav-link {
+    font-size: 1rem;
+    padding: 8px 16px !important;
+  }
+}
+
+.casino-nav .nav-link:hover {
+  color: var(--casino-orange) !important;
+  background: rgba(255, 215, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.user-nav-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-left: var(--spacing-md);
+  padding-left: var(--spacing-md);
+  border-left: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* Mobile menu logic should be added if needed */
+  }
+  .user-nav-info {
+    border-left: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+.brand-logo {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--casino-gold);
+  border: 2px solid var(--casino-gold);
+}
+
+@media (min-width: 768px) {
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ===== CASINO BOX/CONTAINERS ===== */
+.casino-box {
+  background-color: var(--card-bg);
+  border: 2px solid var(--casino-gold); /* Giảm độ dày border */
+  padding: var(--spacing-md);
+  border-radius: 12px; /* Giảm bo góc */
+  box-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.3), /* Giảm shadow */
+    inset 0 0 10px rgba(255, 215, 0, 0.05);
+  width: 100%;
+  margin: var(--spacing-sm) auto; /* Giảm margin */
+  box-sizing: border-box;
+  color: var(--text-light);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .casino-box {
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) auto;
+  }
+}
+
+.casino-box::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, 
+    var(--casino-gold), 
+    var(--casino-orange), 
+    var(--casino-red), 
+    var(--casino-gold));
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0.4;
+  filter: blur(8px);
+}
+
+
+.casino-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid var(--casino-gold);
+  border-radius: 15px;
+  padding: clamp(20px, 3vw, 30px);
+  box-shadow: 
+    0 4px 20px rgba(255, 215, 0, 0.2),
+    inset 0 0 15px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.casino-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 8px 30px rgba(255, 215, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== BUTTONS ===== */
+.btn-casino {
+  background: linear-gradient(45deg, var(--casino-gold), var(--casino-orange));
+  border: none;
+  color: var(--dark-bg);
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 12px 30px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+  min-width: 120px; /* Đảm bảo kích thước tối thiểu */
+}
+
+.btn-casino::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-casino:hover::before {
+  left: 100%;
+}
+
+.btn-casino:hover {
+  background: linear-gradient(45deg, var(--casino-orange), var(--casino-gold));
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+}
+
+.btn-casino:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* ===== ICONS ===== */
+.casino-icon {
+  font-size: clamp(48px, 8vw, 64px); /* Responsive icon size */
+  text-align: center;
+  animation: glow 1.5s ease-in-out infinite alternate;
+  margin-bottom: 20px;
+  color: var(--casino-gold);
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+/* ===== FOOTER ===== */
+.casino-footer {
+  background-color: var(--nav-bg);
+  color: var(--text-gray);
+  text-align: center;
+  padding: var(--spacing-md);
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* ===== UTILITIES ===== */
+.text-gold { color: var(--casino-gold); }
+.text-orange { color: var(--casino-orange); }
+.text-red { color: var(--casino-red); }
+.text-gray { color: var(--text-gray); }
+
+.win { color: #00ff00 !important; font-weight: bold; }
+.lose { color: var(--casino-red) !important; font-weight: bold; }
+.highlight { color: var(--casino-gold) !important; font-weight: bold; }
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .casino-nav {
+    padding: 10px 0;
+  }
+  
+  .casino-nav .nav-link {
+    font-size: 0.9rem;
+    margin: 0 5px;
+    padding: 6px 12px !important;
+  }
+  
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .casino-box {
+    padding: 20px 15px;
+    margin: 15px auto;
+    width: 98%; /* Chiếm gần hết màn hình */
+    border-width: 2px;
+  }
+  
+  .casino-card {
+    padding: 20px 15px;
+  }
+  
+  .btn-casino {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    min-width: 110px;
+  }
+  
+  .casino-icon {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .casino-box {
+    padding: 15px 10px;
+    border-radius: 15px;
+  }
+  
+  .btn-casino {
+    width: 100%; /* Nút full width trên mobile */
+    max-width: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .casino-nav .nav-link {
+    font-size: 0.85rem;
+    padding: 5px 8px !important;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.p-20 { padding: 20px; }
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+.d-flex { display: flex; }
+.flex-column { flex-direction: column; }
+.justify-center { justify-content: center; }
+.align-center { align-items: center; }
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--casino-gold), var(--casino-orange));
+  border-radius: 10px;
+  border: 2px solid var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--casino-orange), var(--casino-gold));
+}
+
+/* ===== FIX FOR FULL SCREEN FIT ===== */
+/* Thêm class này vào container chính của trang replay */
+.full-screen-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 15px;
+}
+
+.game-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Container cho replay page */
+.replay-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.replay-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Đảm bảo casino-box không vượt quá màn hình */
+.casino-box.fit-screen {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  margin: 10px auto;
+}

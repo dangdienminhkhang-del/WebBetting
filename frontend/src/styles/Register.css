@@ -1,0 +1,371 @@
+/* REGISTER STYLES - CASINO THEME */
+.register-container {
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(255, 140, 0, 0.12) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(255, 69, 0, 0.08) 0%, transparent 40%),
+    linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+/* CASINO NOTIFICATION STYLES - GIỮA MÀN HÌNH */
+.casino-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(26, 26, 26, 0.95);
+  border: 3px solid var(--casino-gold);
+  border-radius: 15px;
+  padding: 20px 30px;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+  z-index: 1000;
+  min-width: 350px;
+  max-width: 500px;
+  backdrop-filter: blur(15px);
+  animation: popIn 0.4s ease-out;
+}
+
+.casino-notification.success {
+  border-color: #00ff00;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.7);
+}
+
+.casino-notification.warning {
+  border-color: var(--casino-orange);
+  box-shadow: 0 0 30px rgba(255, 140, 0, 0.7);
+}
+
+.casino-notification.error {
+  border-color: var(--casino-red);
+  box-shadow: 0 0 30px rgba(255, 69, 0, 0.7);
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  justify-content: center;
+}
+
+.notification-icon {
+  font-size: 28px;
+}
+
+.notification-message {
+  flex: 1;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+}
+
+.notification-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: var(--casino-gold);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.notification-close:hover {
+  color: var(--casino-orange);
+  transform: scale(1.2);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* THÊM OVERLAY LÀM MỜ NỀN KHI CÓ THÔNG BÁO */
+.casino-notification::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  backdrop-filter: blur(5px);
+}
+/* HIỆU ỨNG NỀN NHẤP NHÁY */
+.register-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255, 140, 0, 0.25) 0%, transparent 50%);
+  animation: pulseGlow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* CASINO BACKGROUND EFFECTS - GIỐNG LOGIN */
+.casino-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* XÚC XẮC */
+.dice {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  animation: float 7s infinite ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.dice-dot {
+  width: 8px;
+  height: 8px;
+  background: black;
+  border-radius: 50%;
+  flex: 0 0 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice-1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+.dice-1 .dice-dot:nth-child(5) { background: black; }
+.dice-1 .dice-dot:not(:nth-child(5)) { background: transparent; }
+
+.dice-2 {
+  top: 65%;
+  right: 15%;
+  animation-delay: 2s;
+}
+.dice-2 .dice-dot:nth-child(1),
+.dice-2 .dice-dot:nth-child(9) { background: black; }
+.dice-2 .dice-dot:not(:nth-child(1)):not(:nth-child(9)) { background: transparent; }
+
+.dice-3 {
+  top: 45%;
+  left: 75%;
+  animation-delay: 4s;
+}
+.dice-3 .dice-dot:nth-child(1),
+.dice-3 .dice-dot:nth-child(5),
+.dice-3 .dice-dot:nth-child(9) { background: black; }
+.dice-3 .dice-dot:not(:nth-child(1)):not(:nth-child(5)):not(:nth-child(9)) { background: transparent; }
+
+/* LÁ BÀI */
+.poker-card {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  animation: float 8s infinite ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+
+.card-ace {
+  top: 20%;
+  right: 10%;
+  animation-delay: 1s;
+}
+.card-ace::before { content: "A"; font-size: 16px; align-self: flex-start; }
+.card-ace::after { content: "♠"; font-size: 20px; align-self: flex-end; }
+
+.card-king {
+  bottom: 25%;
+  left: 15%;
+  animation-delay: 3s;
+  color: black;
+}
+.card-king::before { content: "K"; font-size: 16px; align-self: flex-start; }
+.card-king::after { content: "♣"; font-size: 20px; align-self: flex-end; }
+
+/* POKER CHIPS */
+.poker-chip {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: float 6s infinite ease-in-out;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  border: 3px solid white;
+}
+
+.chip-red {
+  top: 70%;
+  left: 25%;
+  animation-delay: 0.5s;
+  background: radial-gradient(circle, #ff4444 40%, white 40%, white 45%, #ff4444 45%);
+}
+
+.chip-blue {
+  top: 35%;
+  right: 20%;
+  animation-delay: 2.5s;
+  background: radial-gradient(circle, #4444ff 40%, white 40%, white 45%, #4444ff 45%);
+}
+
+.chip-gold {
+  top: 10%;
+  left: 65%;
+  animation-delay: 1.5s;
+  background: radial-gradient(circle, var(--casino-gold) 40%, white 40%, white 45%, var(--casino-gold) 45%);
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-15px) rotate(90deg); 
+  }
+  50% { 
+    transform: translateY(-8px) rotate(180deg); 
+  }
+  75% { 
+    transform: translateY(-12px) rotate(270deg); 
+  }
+}
+
+/* REGISTER FORM - SỬ DỤNG CASINO THEME */
+.register-form {
+  background: rgba(26, 26, 26, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  border: 3px solid var(--casino-gold);
+}
+
+.casino-header h2 {
+  color: var(--casino-gold);
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.register-slogan {
+  color: #ccc;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.casino-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid var(--casino-gold);
+  border-radius: 8px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.casino-input:focus {
+  outline: none;
+  border-color: var(--casino-orange);
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+  transform: scale(1.02);
+}
+
+.register-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(45deg, var(--casino-gold), var(--casino-orange));
+  color: #1a2a6c;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.register-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+}
+
+.register-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-link {
+  margin-top: 20px;
+  color: #ccc;
+}
+
+.login-link a {
+  color: var(--casino-gold);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+  color: var(--casino-orange);
+  text-shadow: 0 0 5px var(--casino-gold);
+}

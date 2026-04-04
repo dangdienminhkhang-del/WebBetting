@@ -1,0 +1,196 @@
+/* ═══════════════════════════════════════════════════════
+   BOARD.CSS — Caro board controls & game action buttons
+   Dùng chung cho CaroBoard.js và CaroGame.js
+═══════════════════════════════════════════════════════ */
+
+/* ── Board section wrapper ── */
+.caro-board-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+/* ── Navigation controls bar ── */
+.viewport-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 215, 0, 0.12);
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+
+/* ── Nav buttons ── */
+.viewport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #ffd700;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.2px;
+}
+
+.viewport-btn:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.viewport-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Info text ── */
+.viewport-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.72rem;
+  color: rgba(255, 215, 0, 0.55);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.viewport-info span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Action buttons (Chơi tiếp / Đặt cược mới / Về sảnh) ── */
+.caro-action-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.caro-action-bar .btn-ghost-wide,
+.caro-action-bar .btn-gold-wide {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.caro-action-bar .btn-gold-wide {
+  background: linear-gradient(135deg, #ffea00 0%, #ff9500 100%);
+  border: none;
+  color: #000;
+}
+
+.caro-action-bar .btn-gold-wide:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 149, 0, 0.35);
+}
+
+.caro-action-bar .btn-ghost-wide {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.caro-action-bar .btn-ghost-wide:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #fff;
+}
+
+.caro-action-bar .btn-resign {
+  background: rgba(255, 68, 68, 0.08);
+  border: 1px solid rgba(255, 68, 68, 0.25);
+  color: #ff6b6b;
+}
+
+.caro-action-bar .btn-resign:hover {
+  background: rgba(255, 68, 68, 0.18);
+}
+
+/* ── Status card (Số dư, Trạng thái, Đối thủ) ── */
+.caro-status-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 14px;
+  width: 100%;
+}
+
+.caro-status-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.caro-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+}
+
+.caro-status-row:last-child {
+  border-bottom: none;
+}
+
+.caro-status-row .key {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.68rem;
+}
+
+.caro-status-row .val {
+  font-weight: 800;
+  color: #fff;
+}
+
+.caro-status-row .val.gold { color: #ffea00; }
+.caro-status-row .val.green { color: #00ff9d; }
+.caro-status-row .val.red { color: #ff4d4d; }
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .viewport-controls {
+    gap: 6px;
+    padding: 5px 6px;
+  }
+
+  .viewport-btn {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .viewport-info {
+    font-size: 0.65rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .caro-action-bar .btn-ghost-wide,
+  .caro-action-bar .btn-gold-wide {
+    padding: 9px 10px;
+    font-size: 0.78rem;
+  }
+}

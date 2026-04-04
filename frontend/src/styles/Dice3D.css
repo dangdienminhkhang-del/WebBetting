@@ -1,0 +1,429 @@
+
+/* của taixiuupdrage */
+.dice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 30px 0;
+  min-height: 300px;
+}
+
+.dice-pair {
+  display: flex;
+  gap: 60px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+.dice {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+/* Settled state - show final face */
+.dice.settled .dice-3d {
+  transform: var(--final-rotation);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dice-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+/* Improved Rolling Animations with more variety */
+.dice.rolling .dice-3d {
+  animation: rollDiceMain 0.35s ease-in-out infinite;
+}
+
+.dice.rolling-stage-0 .dice-3d {
+  animation: rollStage1 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.dice.rolling-stage-1 .dice-3d {
+  animation: rollStage2 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.dice.rolling-stage-2 .dice-3d {
+  animation: rollStage3 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.dice.rolling-stage-3 .dice-3d {
+  animation: rollStage4 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.dice.rolling-stage-4 .dice-3d {
+  animation: rollStage5 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Main rolling animation - more dynamic */
+@keyframes rollDiceMain {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  25% { transform: rotateX(120deg) rotateY(90deg) rotateZ(45deg); }
+  50% { transform: rotateX(240deg) rotateY(180deg) rotateZ(90deg); }
+  75% { transform: rotateX(360deg) rotateY(270deg) rotateZ(135deg); }
+  100% { transform: rotateX(480deg) rotateY(360deg) rotateZ(180deg); }
+}
+
+/* Stage animations with different axes */
+@keyframes rollStage1 {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(450deg) rotateY(270deg) rotateZ(90deg); }
+}
+
+@keyframes rollStage2 {
+  0% { transform: rotateX(450deg) rotateY(270deg) rotateZ(90deg); }
+  100% { transform: rotateX(270deg) rotateY(540deg) rotateZ(180deg); }
+}
+
+@keyframes rollStage3 {
+  0% { transform: rotateX(270deg) rotateY(540deg) rotateZ(180deg); }
+  100% { transform: rotateX(540deg) rotateY(360deg) rotateZ(270deg); }
+}
+
+@keyframes rollStage4 {
+  0% { transform: rotateX(540deg) rotateY(360deg) rotateZ(270deg); }
+  100% { transform: rotateX(360deg) rotateY(630deg) rotateZ(360deg); }
+}
+
+@keyframes rollStage5 {
+  0% { transform: rotateX(360deg) rotateY(630deg) rotateZ(360deg); }
+  100% { transform: rotateX(720deg) rotateY(450deg) rotateZ(180deg); }
+}
+
+/* Dice Sides - improved gradient and shadows */
+.dice-side {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(145deg, #ffffff, #e8e8e8);
+  border: 3px solid #2c3e50;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    inset 0 2px 10px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 10px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+  backface-visibility: visible;
+}
+
+.dice-side.front  { transform: rotateY(0deg) translateZ(45px); }
+.dice-side.back   { transform: rotateY(180deg) translateZ(45px); }
+.dice-side.right  { transform: rotateY(90deg) translateZ(45px); }
+.dice-side.left   { transform: rotateY(-90deg) translateZ(45px); }
+.dice-side.top    { transform: rotateX(90deg) translateZ(45px); }
+.dice-side.bottom { transform: rotateX(-90deg) translateZ(45px); }
+
+/* Dice Face and Dots */
+.dice-face {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.dice-dot {
+  width: 14px;
+  height: 14px;
+  background: #2c3e50;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 
+    inset -2px -2px 3px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Dot Positions - more precise */
+.dice-dot.center { 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+
+.dice-dot.top-left { 
+  top: 18%; 
+  left: 18%; 
+}
+
+.dice-dot.top-right { 
+  top: 18%; 
+  right: 18%; 
+}
+
+.dice-dot.bottom-left { 
+  bottom: 18%; 
+  left: 18%; 
+}
+
+.dice-dot.bottom-right { 
+  bottom: 18%; 
+  right: 18%; 
+}
+
+.dice-dot.middle-left { 
+  top: 50%; 
+  left: 18%; 
+  transform: translateY(-50%); 
+}
+
+.dice-dot.middle-right { 
+  top: 50%; 
+  right: 18%; 
+  transform: translateY(-50%); 
+}
+
+/* Result Display - improved */
+.dice-result {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  padding: 25px 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: fadeInScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  min-width: 300px;
+}
+
+.result-text {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.result-value {
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.result-type {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.result-type.tai {
+  color: #4CAF50;
+  text-shadow: 
+    0 0 20px rgba(76, 175, 80, 0.6),
+    0 0 40px rgba(76, 175, 80, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.result-type.xiu {
+  color: #f44336;
+  text-shadow: 
+    0 0 20px rgba(244, 67, 54, 0.6),
+    0 0 40px rgba(244, 67, 54, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Shake effect for rolling - more natural */
+.dice.rolling {
+  animation: shake 0.15s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { 
+    transform: translateX(0) translateY(0) rotate(0deg); 
+  }
+  10% { 
+    transform: translateX(-3px) translateY(2px) rotate(-1deg); 
+  }
+  30% { 
+    transform: translateX(3px) translateY(-2px) rotate(1deg); 
+  }
+  50% { 
+    transform: translateX(-2px) translateY(3px) rotate(-0.5deg); 
+  }
+  70% { 
+    transform: translateX(2px) translateY(-3px) rotate(0.5deg); 
+  }
+  90% { 
+    transform: translateX(-1px) translateY(1px) rotate(-0.3deg); 
+  }
+}
+
+/* Enhanced glow effect */
+.dice.rolling .dice-side {
+  box-shadow: 
+    inset 0 2px 10px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 10px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(255, 215, 0, 0.5),
+    0 0 60px rgba(255, 215, 0, 0.3);
+  animation: glowPulse 0.35s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    box-shadow: 
+      inset 0 2px 10px rgba(255, 255, 255, 0.6),
+      inset 0 -2px 10px rgba(0, 0, 0, 0.1),
+      0 0 30px rgba(255, 215, 0, 0.5),
+      0 0 60px rgba(255, 215, 0, 0.3);
+  }
+  50% { 
+    box-shadow: 
+      inset 0 2px 10px rgba(255, 255, 255, 0.6),
+      inset 0 -2px 10px rgba(0, 0, 0, 0.1),
+      0 0 40px rgba(255, 215, 0, 0.7),
+      0 0 80px rgba(255, 215, 0, 0.5);
+  }
+}
+
+/* Hover effect when not rolling */
+.dice:not(.rolling):hover {
+  transform: translateY(-5px) scale(1.05);
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+}
+
+/* Entrance animations */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  60% {
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.05); 
+  }
+}
+
+@keyframes glow {
+  0% { 
+    filter: brightness(1); 
+  }
+  100% { 
+    filter: brightness(1.2); 
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dice-pair {
+    gap: 40px;
+  }
+  
+  .dice {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .dice-side {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .dice-side.front  { transform: rotateY(0deg) translateZ(35px); }
+  .dice-side.back   { transform: rotateY(180deg) translateZ(35px); }
+  .dice-side.right  { transform: rotateY(90deg) translateZ(35px); }
+  .dice-side.left   { transform: rotateY(-90deg) translateZ(35px); }
+  .dice-side.top    { transform: rotateX(90deg) translateZ(35px); }
+  .dice-side.bottom { transform: rotateX(-90deg) translateZ(35px); }
+  
+  .dice-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dice-result {
+    padding: 20px 30px;
+    min-width: 250px;
+  }
+
+  .result-text {
+    font-size: 1.1rem;
+  }
+
+  .result-value {
+    font-size: 1.3rem;
+  }
+
+  .result-type {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dice-pair {
+    gap: 25px;
+  }
+
+  .dice {
+    width: 60px;
+    height: 60px;
+  }
+
+  .dice-side {
+    width: 60px;
+    height: 60px;
+  }
+
+  .dice-side.front  { transform: rotateY(0deg) translateZ(30px); }
+  .dice-side.back   { transform: rotateY(180deg) translateZ(30px); }
+  .dice-side.right  { transform: rotateY(90deg) translateZ(30px); }
+  .dice-side.left   { transform: rotateY(-90deg) translateZ(30px); }
+  .dice-side.top    { transform: rotateX(90deg) translateZ(30px); }
+  .dice-side.bottom { transform: rotateX(-90deg) translateZ(30px); }
+  
+  .dice-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dice-result {
+    padding: 15px 20px;
+    min-width: 200px;
+  }
+
+  .result-text {
+    font-size: 1rem;
+  }
+
+  .result-value {
+    font-size: 1.2rem;
+  }
+
+  .result-type {
+    font-size: 1.3rem;
+  }
+}

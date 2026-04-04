@@ -1,0 +1,1718 @@
+/* PREMIUM LANDING PAGE STYLES */
+.landing-premium {
+  background-color: #05050a;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* OVERLAYS */
+.vignette-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.scanline-effect {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+  z-index: 6;
+  opacity: 0.3;
+}
+
+/* PREMIUM NAV */
+.premium-nav {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  padding: 25px 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-nav.scrolled {
+  padding: 15px 0;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-main {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Khoảng cách giữa logo và chữ */
+}
+
+.premium-logo {
+  width: 50px; /* Tăng từ 45px */
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--casino-gold);
+  box-shadow: 0 0 15px var(--casino-gold), 0 0 30px rgba(255, 204, 0, 0.3); /* Thêm glow mạnh hơn */
+}
+
+.brand-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem; /* Tăng kích thước từ 1.5rem */
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-left: 0;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 204, 0, 0.2); /* Thêm hiệu ứng phát sáng */
+}
+
+.brand-name .gold {
+  color: var(--casino-gold);
+  text-shadow: 0 0 15px rgba(255, 204, 0, 0.6); /* Làm phần chữ vàng rực rỡ hơn */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.user-nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info-landing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.user-info-landing:hover {
+  filter: brightness(1.2);
+}
+
+.user-info-landing .u-name {
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.user-info-landing .u-balance {
+  font-weight: 900;
+  font-size: 0.7rem;
+  color: var(--casino-gold);
+  white-space: nowrap;
+}
+
+.btn-logout-landing {
+  background: rgba(255, 59, 59, 0.1);
+  border: 1px solid rgba(255, 59, 59, 0.3);
+  color: #ff3b3b;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+ 
+.btn-logout-landing:hover {
+  background: #ff3b3b;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 59, 59, 0.4);
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { opacity: 1; color: var(--casino-gold); }
+
+/* NÚT TRỢ LÝ AI TRONG NAV */
+.nav-ai-btn {
+  background: transparent;
+  border: none; 
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: 0.25s;  
+  white-space: nowrap;
+}
+
+.nav-ai-btn:hover {
+  border-color: var(--casino-gold);
+  transform: translateY(-2px); 
+}
+
+.btn-login-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-login-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+.btn-join-premium {
+  background: rgba(178, 183, 29, 0.315);
+  border: 1px solid rgba(235, 255, 59, 0.838);
+  color: #e6ee05dc;
+  padding: 11px 25px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.btn-join-premium:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 204, 0, 0.5); }
+
+/* HERO SECTION */
+.hero-premium {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 100px; /* Giảm từ 150px để đẩy nội dung lên cao hơn */
+  padding-bottom: 20px;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+
+.animated-bg-gradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #05050a, #1a1a2e, #05050a);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-main-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1000px;
+}
+
+.badge-premium {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.6); /* Nền đậm hơn để chữ rõ nét */
+  border: 1px solid var(--casino-gold);
+  color: var(--casino-gold);
+  padding: 10px 24px; /* Tăng nhẹ padding */
+  border-radius: 50px;
+  font-size: 0.8rem; /* Tăng từ 0.75rem */
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.15);
+}
+
+.hero-title-premium {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 5.5rem; /* Giảm từ 6rem */
+  font-weight: 900;
+  line-height: 1.25; /* Tăng từ 1.05 để 2 dòng cách nhau ra */
+  margin-bottom: 15px; /* Giảm từ 20px */
+}
+
+.text-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.5);
+}
+
+.gold-gradient {
+  background: linear-gradient(to bottom, #ffea00, #cc9900);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-desc-premium {
+  font-size: 1.1rem; /* Giảm từ 1.2rem */
+  color: rgba(255,255,255,0.7);
+  max-width: 550px;
+  margin: 0 auto 20px; /* Giảm từ 25px */
+  line-height: 1.5;
+}
+
+.btn-main-gold {
+  background: linear-gradient(to right, #ffea00, #ff6a00);
+  border: none;
+  color: #000;
+  padding: 18px 45px; /* Giảm nhẹ padding */
+  font-size: 1rem; /* Giảm từ 1.1rem */
+  font-weight: 900;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 15px;
+  transition: 0.3s;
+}
+
+.btn-main-gold:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+.player-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.dot-live {
+  width: 8px; height: 8px;
+  background: #00ffcc;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffcc;
+  animation: pulse 2s infinite;
+}
+
+/* GAMES SHOWCASE */
+.games-showcase {
+  padding: 40px 40px; /* Giảm từ 60px */
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh; /* Chiếm trọn màn hình */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-head {
+  text-align: center;
+  margin-top: 35px;  
+  margin-bottom: 10px;
+}
+
+.title-md {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem; /* Giảm từ 3rem */
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.title-line {
+  width: 60px; /* Giảm từ 80px */
+  height: 3px; /* Giảm từ 4px */
+  background: var(--casino-gold);
+  margin: 0 auto;
+}
+
+.game-banners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px; /* Giảm từ 40px */
+}
+
+.game-banner-card {
+  height: 340px; /* Giảm từ 380px để chắc chắn không scroll */
+  border-radius: 16px; 
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 25px; 
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.taixiu-banner {
+  background: url('https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=2070&auto=format&fit=crop') center/cover;
+}
+
+.taixiu-banner:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 30px rgba(255, 106, 0, 0.2);
+}
+
+.taixiu-banner:hover .banner-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(255, 106, 0, 0.15) 100%);
+}
+
+.taixiu-banner .game-type {
+  background: rgba(255, 106, 0, 0.2);
+  padding: 4px 12px;
+  border-radius: 4px;
+  width: fit-content;
+  border: 1px solid #ff6a00;
+  color: #ff6a00;
+  text-shadow: 0 0 10px rgba(255, 106, 0, 0.5);
+}
+
+.caro-banner {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  overflow: hidden;
+}
+
+.caro-banner:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 30px rgba(255, 204, 0, 0.2);
+}
+
+.caro-banner:hover .banner-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0, 255, 255, 0.1) 100%);
+}
+
+.caro-banner .banner-content {
+  z-index: 10;
+}
+
+.caro-banner h3 {
+  color: #fff;
+  text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+}
+
+.caro-banner p {
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+}
+
+.caro-banner .game-type {
+  background: rgba(0, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 4px;
+  width: fit-content;
+  border: 1px solid #00ffff;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Giả lập lưới bàn cờ caro trong web */
+.caro-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+}
+
+/* Thêm các quân cờ X và O giả lập */
+.caro-banner::after {
+  content: 'X';
+  position: absolute;
+  top: 20%; left: 30%;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #ff3b3b;
+  text-shadow: 0 0 10px #ff3b3b, 0 0 20px #ff3b3b;
+  opacity: 0.6;
+  z-index: 2;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.caro-banner-pieces {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.piece-o {
+  position: absolute;
+  top: 45%; left: 55%;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  opacity: 0.5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.piece-x-2 {
+  position: absolute;
+  top: 60%; left: 15%;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ff3b3b;
+  text-shadow: 0 0 10px #ff3b3b;
+  opacity: 0.4;
+  transform: rotate(-15deg);
+}
+
+.chess-banner {
+  background: url('https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=2000&auto=format&fit=crop') center/cover;
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chess-banner:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.chess-banner .game-type {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 4px;
+  width: fit-content;
+  border: 1px solid #fff;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  transition: 0.5s;
+}
+
+.game-banner-card:hover { transform: scale(1.02); }
+.game-banner-card:hover .banner-overlay { background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(255, 204, 0, 0.1) 100%); }
+
+.banner-content {
+  position: relative;
+  z-index: 5;
+}
+
+.game-type {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--casino-gold);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.banner-content h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem; /* Giảm từ 2rem */
+  font-weight: 900;
+  margin-bottom: 10px; /* Giảm từ 15px */
+}
+
+.banner-content p {
+  color: rgba(255,255,255,0.7);
+  max-width: 400px;
+  margin-bottom: 15px; /* Giảm từ 25px */
+  font-size: 0.85rem; /* Thêm font-size nhỏ hơn */
+}
+
+.btn-play-mini {
+  background: #fff;
+  border: none;
+  color: #000;
+  padding: 12px 35px;
+  font-weight: 800;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-play-mini:hover { background: var(--casino-gold); transform: translateX(10px); }
+
+/* TRUST FEATURES */
+.trust-features {
+  padding: 100px 40px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.trust-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+}
+
+.trust-item {
+  text-align: center;
+}
+
+.icon-box {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.trust-item h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.trust-item p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+}
+
+/* AUTH PAGES (LOGIN/REGISTER) */
+.login-page {
+  min-height: 100vh;
+  background-color: #05050a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.bg-glow-1 {
+  position: absolute;
+  top: -10%; left: -10%;
+  width: 50%; height: 50%;
+  background: radial-gradient(circle, rgba(255, 204, 0, 0.05) 0%, transparent 70%);
+  z-index: 1;
+}
+
+.bg-glow-2 {
+  position: absolute;
+  bottom: -10%; right: -10%;
+  width: 50%; height: 50%;
+  background: radial-gradient(circle, rgba(255, 106, 0, 0.05) 0%, transparent 70%);
+  z-index: 1;
+}
+
+.login-content {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  gap: 60px;
+  z-index: 10;
+  align-items: center;
+}
+
+.login-teaser {
+  flex: 1;
+}
+
+.brand-box {
+  margin-bottom: 40px;
+}
+
+.brand-main {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.login-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--casino-gold);
+  box-shadow: 0 0 20px var(--casino-gold);
+}
+
+.main-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.slogan {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 1px;
+}
+
+.live-stats-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.winners-feed .feed-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.live-dot {
+  width: 8px; height: 8px;
+  background: #00ffcc;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffcc;
+  animation: pulse 2s infinite;
+}
+
+.winner-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.winner-avatar { font-size: 1.2rem; }
+.winner-info { flex: 1; display: flex; flex-direction: column; }
+.w-name { font-weight: 700; font-size: 0.9rem; }
+.w-game { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+.winner-amount { font-weight: 900; color: #00ffcc; font-size: 0.95rem; }
+
+.login-form-wrapper {
+  width: 420px;
+}
+
+.login-card {
+  padding: 30px 40px; /* Giảm padding dọc từ 40px xuống 30px */
+  background: rgba(15, 15, 26, 0.8) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-header h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.header-line {
+  width: 50px;
+  height: 3px;
+  background: var(--casino-gold);
+  margin: 0 auto;
+}
+
+.register-promo {
+  font-size: 0.85rem;
+  color: var(--casino-gold);
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.input-group-modern {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+.input-group-modern input {
+  width: 100%;
+  padding: 15px 15px 15px 45px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.input-group-modern input:focus {
+  outline: none;
+  border-color: var(--casino-gold);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+}
+
+.btn-casino-lg {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to right, #ffea00, #ff6a00);
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 900;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn-casino-lg:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255, 204, 0, 0.3); }
+
+.card-footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.link-highlight {
+  color: var(--casino-gold);
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 8px;
+}
+
+.link-highlight:hover { text-decoration: underline; }
+
+.loader {
+  width: 20px; height: 20px;
+  border: 3px solid rgba(0,0,0,0.1);
+  border-top: 3px solid #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+@media (max-width: 992px) {
+  .login-teaser { display: none; }
+  .login-content { justify-content: center; }
+  .main-title { font-size: 2.5rem; }
+}
+
+@media (max-width: 480px) {
+  .login-form-wrapper { width: 100%; }
+  .login-card { padding: 30px 20px; }
+  .card-header h2 { font-size: 1.5rem; }
+  .input-group-modern input { font-size: 0.9rem; }
+  .btn-casino-lg { font-size: 1rem; }
+}
+
+/* PREMIUM TOAST NOTIFICATIONS */
+.premium-toast {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 9999;
+  min-width: 300px;
+  animation: toastSlideIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.toast-content {
+  background: rgba(15, 15, 26, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 18px 25px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-toast.success .toast-content { border-left: 4px solid #00ffcc; }
+.premium-toast.error .toast-content { border-left: 4px solid #ff3b3b; }
+
+.toast-msg {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+}
+
+.premium-toast.success .toast-progress { background: #00ffcc; animation: toastProgress 2s linear forwards; }
+.premium-toast.error .toast-progress { background: #ff3b3b; animation: toastProgress 3s linear forwards; }
+
+@keyframes toastSlideIn {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toastProgress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+@media (max-width: 480px) {
+  .premium-toast {
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    min-width: unset;
+  }
+}
+
+/* FOOTER PREMIUM */
+.footer-premium {
+  padding: 80px 40px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-top {
+  max-width: 1400px;
+  margin: 0 auto 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand .brand-name { margin-left: 0; font-size: 2rem; margin-bottom: 10px; display: block; }
+.footer-brand p { color: rgba(255,255,255,0.4); font-size: 0.9rem; }
+
+.partner-logos {
+  display: flex;
+  gap: 30px;
+}
+
+.partner {
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 2px;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 1px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-title-premium { font-size: 4rem; }
+  .game-banners-grid { grid-template-columns: 1fr; }
+  .floating-jackpot-box { position: static; margin: 40px auto 0; width: fit-content; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero-title-premium { font-size: 3rem; }
+  .trust-container { grid-template-columns: 1fr; gap: 40px; }
+  .footer-top { flex-direction: column; text-align: center; gap: 40px; }
+}
+
+/* ── LOCKED ACCOUNT MODAL ── */
+.locked-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+}
+
+.locked-modal-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #0f0f1a;
+  border: 1px solid rgba(255, 59, 59, 0.3);
+  border-radius: 24px;
+  padding: 40px 36px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(255, 59, 59, 0.15), 0 30px 60px rgba(0,0,0,0.6);
+  z-index: 10000;
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.88); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.locked-icon {
+  font-size: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 59, 59, 0.1);
+  border: 2px solid rgba(255, 59, 59, 0.3);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+
+.locked-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #ff6b6b;
+  margin: 0 0 10px;
+  letter-spacing: 0.5px;
+}
+
+.locked-desc {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin: 0 0 22px;
+}
+
+.locked-time-box {
+  background: rgba(255, 59, 59, 0.07);
+  border: 1px solid rgba(255, 59, 59, 0.2);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.locked-time-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.locked-time-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #ff6b6b;
+}
+
+.locked-contact {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.8rem;
+  margin: 0 0 26px;
+}
+
+.locked-btn-close {
+  width: 100%;
+  padding: 14px;
+  background: rgba(255, 59, 59, 0.12);
+  border: 1px solid rgba(255, 59, 59, 0.3);
+  color: #ff6b6b;
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.locked-btn-close:hover {
+  background: rgba(255, 59, 59, 0.22);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════
+   FEATURES SECTION
+══════════════════════════════════════ */
+.features-section {
+  padding: 80px 40px;
+  background: #05050a;
+}
+
+.section-sub {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.95rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1150px;
+  margin: 50px auto 0;
+  position: relative;
+  bottom: 29px;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
+  padding: 24px 20px;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255,204,0,0.4), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,204,0,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.feature-card:hover::before { opacity: 1; }
+
+.feature-icon {
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.feature-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #ffcc00;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════
+   ABOUT SECTION
+══════════════════════════════════════ */
+.about-section {
+  padding: 80px 40px;
+  background: linear-gradient(180deg, #05050a 0%, #0a0a14 100%);
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-tag {
+  display: inline-block;
+  background: rgba(255,204,0,0.1);
+  border: 1px solid rgba(255,204,0,0.3);
+  color: #ffcc00;
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 4px 14px;
+  border-radius: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.about-left h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.about-desc {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.about-values {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.value-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.value-item strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.value-item span {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Stats showcase */
+.stats-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-showcase-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.stat-showcase-item:hover {
+  border-color: rgba(255,204,0,0.2);
+  background: rgba(255,255,255,0.05);
+}
+
+.stat-big {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-big.gold { color: #ffcc00; }
+
+.stat-label-big {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+}
+
+/* Tech stack tags */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+.tech-tag:hover {
+  border-color: rgba(255,204,0,0.3);
+  color: #ffcc00;
+}
+
+@media (max-width: 768px) {
+  .about-container { grid-template-columns: 1fr; gap: 40px; }
+  .features-section, .about-section { padding: 60px 20px; }
+  .features-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Contact / Social block ── */
+.contact-block {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.contact-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 14px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s;
+  flex: 1;
+  justify-content: center;
+}
+
+.social-btn.facebook {
+  background: rgba(24, 119, 242, 0.12);
+  border: 1px solid #0965f0e1;
+  color: #4a9eff;
+}
+
+.social-btn.facebook:hover {
+  background: rgba(24, 119, 242, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(24, 119, 242, 0.2);
+}
+ 
+.contact-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+  margin: 0;
+  text-align: center;
+}
+
+/* Instagram gradient override */
+.social-btn.instagram {
+  background: rgba(214, 41, 118, 0.12);
+  border: 1px solid #d62976;
+  color: #d62976; 
+} 
+
+.social-btn.instagram:hover {
+  background: rgba(239, 10, 10, 0.3) !important;
+  transform: translateY(-2px);
+  color: white;
+  box-shadow: 0 6px 20px linear-gradient(135deg, #feda77, #f58529, #dd2a7b, #8134af, #515bd4) !important;
+}
+ 
+
+/* ✅ ĐÚNG - dùng background-clip */
+.social-btn.instagram .insta-text {
+  background: linear-gradient(135deg, #feda77, #f58529, #dd2a7b, #8134af, #515bd4);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+ 
+.about-left{
+  margin-bottom:  10%;
+}
+/* ── Game preview cards ── */
+.game-preview-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.game-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.game-preview-card:hover {
+  background: rgba(255,204,0,0.07);
+  border-color: rgba(255,204,0,0.2);
+  transform: translateX(4px);
+}
+
+.gpc-icon {
+  font-size: 1.6rem;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.gpc-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gpc-name {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.gpc-desc {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+}
+
+.gpc-arrow {
+  font-size: 1.2rem;
+  color: rgba(255,204,0,0.4);
+  font-weight: 900;
+  transition: 0.2s;
+}
+
+.game-preview-card:hover .gpc-arrow {
+  color: #ffcc00;
+  transform: translateX(3px);
+}
+
+/* ── Guide Modal ── */
+.guide-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.guide-modal-card {
+  background: #0f0f1a;
+  border: 1px solid rgba(255,204,0,0.2);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(255,204,0,0.05);
+  animation: guideModalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes guideModalPop {
+  from { opacity: 0; transform: scale(0.9) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.guide-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.guide-modal-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+}
+
+.guide-modal-close {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.guide-modal-close:hover { color: #fff; }
+
+.guide-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,204,0,0.2) transparent;
+}
+
+.guide-section h4 {
+  font-size: 0.78rem;
+  font-weight: 900;
+  color: #ffcc00;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 6px;
+}
+
+.guide-section p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.guide-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ═══════════════════════════════════════
+   LANDING PAGE — MOBILE NAV
+═══════════════════════════════════════ */
+
+/* Hamburger button — chỉ hiện trên mobile */
+.nav-hamburger {
+  display: none;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.nav-hamburger:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Mobile drawer overlay */
+.nav-mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1500;
+  backdrop-filter: blur(4px);
+}
+
+.nav-mobile-overlay.visible {
+  display: block;
+}
+
+/* Mobile drawer */
+.nav-mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(280px, 85vw);
+  height: 100vh;
+  background: rgba(10, 10, 18, 0.98);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  z-index: 1600;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+}
+
+.nav-mobile-drawer.open {
+  right: 0;
+}
+
+.nav-drawer-close {
+  align-self: flex-end;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: rgba(255,255,255,0.6);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.nav-drawer-item {
+  display: block;
+  padding: 14px 16px;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: 0.2s;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+.nav-drawer-item:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--casino-gold);
+}
+
+.nav-drawer-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin: 8px 0;
+}
+
+.nav-drawer-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-container {
+    padding: 0 20px;
+  }
+
+  /* Hero */
+  .hero-title-premium {
+    font-size: 2.8rem !important;
+  }
+
+  .hero-desc-premium {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  .btn-main-gold {
+    padding: 14px 30px;
+    font-size: 0.9rem;
+  }
+
+  /* Games grid */
+  .game-banners-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .game-banner-card {
+    height: 260px !important;
+  }
+
+  /* Features */
+  .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* About */
+  .about-container {
+    grid-template-columns: 1fr !important;
+    gap: 30px;
+  }
+
+  /* Footer */
+  .footer-top {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .partner-logos {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* Games showcase */
+  .games-showcase {
+    padding: 40px 20px;
+  }
+
+  .title-md {
+    font-size: 1.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title-premium {
+    font-size: 2.2rem !important;
+  }
+
+  .hero-premium {
+    padding-top: 80px;
+  }
+}

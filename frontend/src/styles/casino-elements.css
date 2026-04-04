@@ -1,0 +1,348 @@
+/* CASINO ELEMENTS - ĐƠN GIẢN & HIỆU QUẢ */
+.casino-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* XÚC XẮC 3D - SỬA LỖI CẠNH THỪA */
+.dice-3d-simple {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+  animation: diceSimpleSpin 8s infinite ease-in-out;
+}
+
+.dice-face-simple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    inset -3px -3px 8px rgba(0,0,0,0.15),
+    inset 3px 3px 8px rgba(255,255,255,0.9),
+    3px 3px 15px rgba(0,0,0,0.4);
+  backface-visibility: hidden;
+  padding: 8px;
+  box-sizing: border-box;
+  /* QUAN TRỌNG: Thêm transform-origin để căn giữa */
+  transform-origin: center;
+}
+
+/* CÁC MẶT XÚC XẮC - SỬA LẠI VỊ TRÍ CHÍNH XÁC */
+.dice-face-1 { 
+  transform: translateZ(30px) rotate(0deg); 
+}
+.dice-face-2 { 
+  transform: translateZ(-30px) rotateY(180deg); 
+}
+.dice-face-3 { 
+  transform: translateX(30px) rotateY(90deg); 
+}
+.dice-face-4 { 
+  transform: translateX(-30px) rotateY(-90deg); 
+}
+.dice-face-5 { 
+  transform: translateY(-30px) rotateX(90deg); 
+}
+.dice-face-6 { 
+  transform: translateY(30px) rotateX(-90deg); 
+}
+
+/* CHẤM XÚC XẮC - CHẤM SỐ 1 MÀU ĐỎ */
+.dice-dot-simple {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 
+    inset -2px -2px 4px rgba(0,0,0,0.6),
+    inset 1px 1px 2px rgba(255,255,255,0.3);
+  position: absolute;
+}
+
+/* CHẤM SỐ 1 MÀU ĐỎ */
+.dice-face-1 .dice-dot-simple { 
+  background: #e74c3c; /* Màu đỏ */
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  box-shadow: 
+    inset -2px -2px 4px rgba(150,0,0,0.8),
+    inset 1px 1px 2px rgba(255,200,200,0.4);
+}
+
+/* CÁC CHẤM KHÁC MÀU ĐEN */
+.dice-face-2 .dice-dot-simple,
+.dice-face-3 .dice-dot-simple,
+.dice-face-4 .dice-dot-simple,
+.dice-face-5 .dice-dot-simple,
+.dice-face-6 .dice-dot-simple {
+  background: #000;
+}
+
+/* BỐ TRÍ CHẤM VỚI KHOẢNG CÁCH ĐẸP */
+.dice-face-2 .dice-dot-simple:nth-child(1) { top: 20%; left: 20%; }
+.dice-face-2 .dice-dot-simple:nth-child(2) { bottom: 20%; right: 20%; }
+
+.dice-face-3 .dice-dot-simple:nth-child(1) { top: 20%; left: 20%; }
+.dice-face-3 .dice-dot-simple:nth-child(2) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.dice-face-3 .dice-dot-simple:nth-child(3) { bottom: 20%; right: 20%; }
+
+.dice-face-4 .dice-dot-simple:nth-child(1) { top: 20%; left: 20%; }
+.dice-face-4 .dice-dot-simple:nth-child(2) { top: 20%; right: 20%; }
+.dice-face-4 .dice-dot-simple:nth-child(3) { bottom: 20%; left: 20%; }
+.dice-face-4 .dice-dot-simple:nth-child(4) { bottom: 20%; right: 20%; }
+
+.dice-face-5 .dice-dot-simple:nth-child(1) { top: 20%; left: 20%; }
+.dice-face-5 .dice-dot-simple:nth-child(2) { top: 20%; right: 20%; }
+.dice-face-5 .dice-dot-simple:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.dice-face-5 .dice-dot-simple:nth-child(4) { bottom: 20%; left: 20%; }
+.dice-face-5 .dice-dot-simple:nth-child(5) { bottom: 20%; right: 20%; }
+
+.dice-face-6 .dice-dot-simple:nth-child(1) { top: 20%; left: 20%; }
+.dice-face-6 .dice-dot-simple:nth-child(2) { top: 20%; left: 50%; transform: translateX(-50%); }
+.dice-face-6 .dice-dot-simple:nth-child(3) { top: 20%; right: 20%; }
+.dice-face-6 .dice-dot-simple:nth-child(4) { bottom: 20%; left: 20%; }
+.dice-face-6 .dice-dot-simple:nth-child(5) { bottom: 20%; left: 50%; transform: translateX(-50%); }
+.dice-face-6 .dice-dot-simple:nth-child(6) { bottom: 20%; right: 20%; }
+
+/* ANIMATION - SỬA LẠI CHO MƯỢT HƠN */
+@keyframes diceSimpleSpin {
+  0% { 
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(0px); 
+  }
+  16% { 
+    transform: rotateX(90deg) rotateY(60deg) rotateZ(30deg) translateY(-15px); 
+  }
+  33% { 
+    transform: rotateX(180deg) rotateY(120deg) rotateZ(60deg) translateY(-8px); 
+  }
+  50% { 
+    transform: rotateX(270deg) rotateY(180deg) rotateZ(90deg) translateY(-20px); 
+  }
+  66% { 
+    transform: rotateX(360deg) rotateY(240deg) rotateZ(120deg) translateY(-12px); 
+  }
+  83% { 
+    transform: rotateX(450deg) rotateY(300deg) rotateZ(150deg) translateY(-18px); 
+  }
+  100% { 
+    transform: rotateX(540deg) rotateY(360deg) rotateZ(180deg) translateY(0px); 
+  }
+}
+
+/* VỊ TRÍ XÚC XẮC - THÊM NHIỀU HƠN */
+ 
+.dice-pos-2 { top: 70%; right: 12%; animation-delay: 25s; }
+ 
+.dice-pos-4 { bottom: 25%; left: 15%; animation-delay: 1s; }
+.dice-pos-5 { top: 20%; right: 20%; animation-delay: 3s; }
+ 
+ 
+
+/* LÁ BÀI ĐƠN GIẢN */
+.poker-card-simple {
+  position: absolute;
+  width: 60px;
+  height: 85px;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 6px;
+  box-shadow: 
+    3px 3px 15px rgba(0,0,0,0.3),
+    inset 1px 1px 2px rgba(255,255,255,0.8),
+    inset -1px -1px 2px rgba(0,0,0,0.1);
+  animation: cardSimpleFloat 12s infinite ease-in-out;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.card-content-simple {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-corner-simple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.card-corner-top {
+  align-self: flex-start;
+}
+
+.card-corner-bottom {
+  align-self: flex-end;
+  transform: rotate(180deg);
+}
+
+.card-suit-simple {
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.card-center-simple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+}
+
+/* MÀU SẮC LÁ BÀI */
+.card-spades-simple { 
+  color: #000; 
+  animation-delay: 1s;
+}
+.card-spades-simple .card-suit-simple { color: #000; }
+
+.card-hearts-simple { 
+  color: #e74c3c; 
+  animation-delay: 7s;
+}
+.card-hearts-simple .card-suit-simple { color: #e74c3c; }
+
+.card-diamonds-simple { 
+  color: #e74c3c; 
+  animation-delay: 4s;
+}
+.card-diamonds-simple .card-suit-simple { color: #e74c3c; }
+
+.card-clubs-simple { 
+  color: #000; 
+  animation-delay: 10s;
+}
+.card-clubs-simple .card-suit-simple { color: #000; }
+
+/* VỊ TRÍ LÁ BÀI */
+.card-simple-pos-1 { top: 20%; left: 15%; }
+.card-simple-pos-2 { top: 60%; right: 20%; }
+.card-simple-pos-3 { bottom: 25%; left: 75%; }
+.card-simple-pos-4 { top: 45%; left: 85%; }
+
+/* POKER CHIPS ĐƠN GIẢN */
+.poker-chip-simple {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  animation: chipSimpleFloat 6s infinite ease-in-out;
+  box-shadow: 
+    3px 3px 15px rgba(0,0,0,0.3),
+    inset 0 0 10px rgba(0,0,0,0.2);
+  border: 3px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poker-chip-simple::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--chip-color-1) 0deg 90deg,
+    var(--chip-color-2) 90deg 180deg,
+    var(--chip-color-1) 180deg 270deg,
+    var(--chip-color-2) 270deg 360deg
+  );
+}
+
+.poker-chip-simple::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* CHIPS MÀU SẮC */
+.chip-red-simple {
+  --chip-color-1: #ff4444;
+  --chip-color-2: #cc0000;
+  top: 70%; left: 25%; animation-delay: 0.5s;
+}
+
+.chip-blue-simple {
+  --chip-color-1: #4444ff;
+  --chip-color-2: #0000cc;
+  top: 35%; right: 25%; animation-delay: 2.5s;
+}
+
+.chip-gold-simple {
+  --chip-color-1: #FFD700;
+  --chip-color-2: #FFA500;
+  top: 15%; left: 65%; animation-delay: 1.5s;
+}
+
+.chip-green-simple {
+  --chip-color-1: #44ff44;
+  --chip-color-2: #00cc00;
+  bottom: 20%; right: 15%; animation-delay: 3.5s;
+}
+
+/* ANIMATIONS ĐƠN GIẢN */
+@keyframes diceSimpleSpin {
+  0%, 100% { 
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(0px); 
+  }
+  25% { 
+    transform: rotateX(180deg) rotateY(90deg) rotateZ(45deg) translateY(-20px); 
+  }
+  50% { 
+    transform: rotateX(360deg) rotateY(180deg) rotateZ(90deg) translateY(-10px); 
+  }
+  75% { 
+    transform: rotateX(540deg) rotateY(270deg) rotateZ(135deg) translateY(-15px); 
+  }
+}
+
+@keyframes cardSimpleFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-25px) rotate(5deg); 
+  }
+  50% { 
+    transform: translateY(-12px) rotate(-3deg); 
+  }
+  75% { 
+    transform: translateY(-18px) rotate(2deg); 
+  }
+}
+
+@keyframes chipSimpleFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  33% { 
+    transform: translateY(-15px) rotate(120deg) scale(1.1); 
+  }
+  66% { 
+    transform: translateY(-8px) rotate(240deg) scale(0.9); 
+  }
+}

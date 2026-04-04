@@ -1,0 +1,1019 @@
+/* DICE ANIMATION STYLES - REALISTIC VERSION */
+.dice-roll-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 40px 0;
+  perspective: 1000px;
+  position: relative;
+  min-height: 120px;
+}
+
+.dice-roll-item {
+  width: 80px; /* Tăng kích thước xúc xắc */
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center;
+}
+
+/* BÀN CASINO */
+.dice-table {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 4px;
+  background: linear-gradient(90deg, #8B4513, #A0522D, #8B4513);
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* CÁC MẶT XÚC XẮC */
+.dice-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #ffffff, #f8f8f8);
+  border-radius: 12px; /* Bo góc đẹp hơn */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    inset -4px -4px 10px rgba(0,0,0,0.2),
+    inset 4px 4px 10px rgba(255,255,255,0.9),
+    3px 3px 8px rgba(0,0,0,0.4);
+  backface-visibility: hidden;
+  border: 2px solid #e0e0e0;
+}
+
+/* CHẤM XÚC XẮC - TO VÀ CÂN ĐỐI */
+.dice-dot {
+  width: 18px; /* TĂNG KÍCH THƯỚC CHẤM */
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 
+    inset -3px -3px 6px rgba(0,0,0,0.8),
+    inset 2px 2px 4px rgba(255,255,255,0.4);
+  position: absolute;
+}
+
+/* CHẤM SỐ 1 MÀU ĐỎ */
+.face-1 .dice-dot {
+  background: #e74c3c; /* Màu đỏ */
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    inset -3px -3px 6px rgba(150,0,0,0.9),
+    inset 2px 2px 4px rgba(255,200,200,0.5);
+  width: 20px; /* Chấm số 1 to hơn chút */
+  height: 20px;
+}
+
+/* CÁC CHẤM KHÁC MÀU ĐEN */
+.face-2 .dice-dot,
+.face-3 .dice-dot,
+.face-4 .dice-dot,
+.face-5 .dice-dot,
+.face-6 .dice-dot {
+  background: #000;
+}
+
+/* BỐ TRÍ CHẤM CÂN ĐỐI - KHOẢNG CÁCH ĐẸP */
+/* CHỈ SỬA PHẦN NÀY - KHOẢNG CÁCH CHẤM 12% */
+.face-2 .dice-dot:nth-child(1) { top: 12%; left: 12%; }
+.face-2 .dice-dot:nth-child(2) { bottom: 12%; right: 12%; }
+
+.face-3 .dice-dot:nth-child(1) { top: 12%; left: 12%; }
+.face-3 .dice-dot:nth-child(2) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.face-3 .dice-dot:nth-child(3) { bottom: 12%; right: 12%; }
+
+.face-4 .dice-dot:nth-child(1) { top: 12%; left: 12%; }
+.face-4 .dice-dot:nth-child(2) { top: 12%; right: 12%; }
+.face-4 .dice-dot:nth-child(3) { bottom: 12%; left: 12%; }
+.face-4 .dice-dot:nth-child(4) { bottom: 12%; right: 12%; }
+
+.face-5 .dice-dot:nth-child(1) { top: 12%; left: 12%; }
+.face-5 .dice-dot:nth-child(2) { top: 12%; right: 12%; }
+.face-5 .dice-dot:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.face-5 .dice-dot:nth-child(4) { bottom: 12%; left: 12%; }
+.face-5 .dice-dot:nth-child(5) { bottom: 12%; right: 12%; }
+
+.face-6 .dice-dot:nth-child(1) { top: 12%; left: 12%; }
+.face-6 .dice-dot:nth-child(2) { top: 12%; right: 12%; }
+.face-6 .dice-dot:nth-child(3) { top: 50%; left: 12%; transform: translateY(-50%); }
+.face-6 .dice-dot:nth-child(4) { top: 50%; right: 12%; transform: translateY(-50%); }
+.face-6 .dice-dot:nth-child(5) { bottom: 12%; left: 12%; }
+.face-6 .dice-dot:nth-child(6) { bottom: 12%; right: 12%; }
+
+/* VỊ TRÍ CÁC MẶT 3D */
+.face-1 { transform: translateZ(40px); }
+.face-2 { transform: translateZ(-40px) rotateY(180deg); }
+.face-3 { transform: translateX(40px) rotateY(90deg); }
+.face-4 { transform: translateX(-40px) rotateY(-90deg); }
+.face-5 { transform: translateY(-40px) rotateX(90deg); }
+.face-6 { transform: translateY(40px) rotateX(-90deg); }
+
+/* HIỆU ỨNG RỚT XÚC XẮC THẬT */
+.dice-falling {
+  animation: diceFall 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes diceFall {
+  0% {
+    transform: 
+      translateY(-200px) 
+      rotateX(0deg) rotateY(0deg) rotateZ(0deg)
+      scale(1.2);
+    opacity: 0;
+  }
+  20% {
+    transform: 
+      translateY(-150px) 
+      rotateX(180deg) rotateY(90deg) rotateZ(45deg)
+      scale(1.1);
+  }
+  40% {
+    transform: 
+      translateY(-80px) 
+      rotateX(360deg) rotateY(180deg) rotateZ(90deg)
+      scale(1);
+  }
+  60% {
+    transform: 
+      translateY(-20px) 
+      rotateX(540deg) rotateY(270deg) rotateZ(135deg)
+      scale(0.95);
+  }
+  80% {
+    transform: 
+      translateY(5px) 
+      rotateX(720deg) rotateY(360deg) rotateZ(180deg)
+      scale(1);
+  }
+  100% {
+    transform: 
+      translateY(0px) 
+      rotateX(900deg) rotateY(450deg) rotateZ(225deg)
+      scale(1);
+  }
+}
+
+/* HIỆU ỨNG LĂN TRÊN BÀN */
+.dice-rolling {
+  animation: diceRollOnTable 1.2s ease-out infinite;
+}
+
+@keyframes diceRollOnTable {
+  0% {
+    transform: 
+      translateX(0px) translateY(0px)
+      rotateX(900deg) rotateY(450deg) rotateZ(225deg);
+  }
+  15% {
+    transform: 
+      translateX(15px) translateY(-2px)
+      rotateX(1000deg) rotateY(500deg) rotateZ(280deg);
+  }
+  30% {
+    transform: 
+      translateX(-10px) translateY(1px)
+      rotateX(1100deg) rotateY(550deg) rotateZ(335deg);
+  }
+  45% {
+    transform: 
+      translateX(8px) translateY(-1px)
+      rotateX(1200deg) rotateY(600deg) rotateZ(390deg);
+  }
+  60% {
+    transform: 
+      translateX(-12px) translateY(2px)
+      rotateX(1300deg) rotateY(650deg) rotateZ(445deg);
+  }
+  75% {
+    transform: 
+      translateX(5px) translateY(-1px)
+      rotateX(1400deg) rotateY(700deg) rotateZ(500deg);
+  }
+  90% {
+    transform: 
+      translateX(-3px) translateY(1px)
+      rotateX(1500deg) rotateY(750deg) rotateZ(555deg);
+  }
+  100% {
+    transform: 
+      translateX(0px) translateY(0px)
+      rotateX(1600deg) rotateY(800deg) rotateZ(610deg);
+  }
+}
+
+/* HIỆU ỨNG DỪNG LẠI TỰ NHIÊN */
+.dice-stopping {
+  animation: diceStopNatural 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes diceStopNatural {
+  0% {
+    transform: 
+      translateX(0px) translateY(0px)
+      rotateX(1600deg) rotateY(800deg) rotateZ(610deg);
+  }
+  30% {
+    transform: 
+      translateX(8px) translateY(-3px)
+      rotateX(1620deg) rotateY(810deg) rotateZ(620deg);
+  }
+  50% {
+    transform: 
+      translateX(-5px) translateY(2px)
+      rotateX(1610deg) rotateY(805deg) rotateZ(615deg);
+  }
+  70% {
+    transform: 
+      translateX(3px) translateY(-1px)
+      rotateX(1605deg) rotateY(802deg) rotateZ(612deg);
+  }
+  85% {
+    transform: 
+      translateX(-2px) translateY(1px)
+      rotateX(1602deg) rotateY(801deg) rotateZ(611deg);
+  }
+  100% {
+    transform: 
+      translateX(0px) translateY(0px)
+      rotateX(1600deg) rotateY(800deg) rotateZ(610deg);
+  }
+}
+
+/* HIỆU ỨNG BOUNCE KHI CHẠM BÀN */
+.dice-bounce {
+  animation: diceBounce 0.3s ease-out;
+}
+
+@keyframes diceBounce {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-8px) scale(1.05); }
+}
+
+/* KẾT QUẢ HIỂN THỊ */
+.dice-result-text {
+  text-align: center;
+  margin: 25px 0;
+  padding: 20px;
+  background: rgba(255, 215, 0, 0.15);
+  border: 3px solid var(--casino-gold);
+  border-radius: 15px;
+  color: var(--casino-gold);
+  font-size: 1.4em;
+  font-weight: bold;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+}
+
+.dice-values {
+  font-size: 1.6em;
+  color: white;
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+.dice-total {
+  font-size: 2em;
+  color: var(--casino-gold);
+  margin: 12px 0;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+/* LOADING */
+.dice-loading {
+  text-align: center;
+  color: var(--casino-gold);
+  font-size: 1.3em;
+  margin: 20px 0;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* SHAKE EFFECT CHO KỊCH TÍNH */
+.dice-shake {
+  animation: tableShake 0.5s ease-in-out;
+}
+
+@keyframes tableShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .dice-roll-container {
+    gap: 30px;
+  }
+  
+  .dice-roll-item {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .dice-dot {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .face-1 .dice-dot {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .face-1 { transform: translateZ(32.5px); }
+  .face-2 { transform: translateZ(-32.5px) rotateY(180deg); }
+  .face-3 { transform: translateX(32.5px) rotateY(90deg); }
+  .face-4 { transform: translateX(-32.5px) rotateY(-90deg); }
+  .face-5 { transform: translateY(-32.5px) rotateX(90deg); }
+  .face-6 { transform: translateY(32.5px) rotateX(-90deg); }
+  
+  .dice-table {
+    width: 250px;
+  }
+}
+/* ANIMATION RƠI - 2 XÚC XẮC KHÁC NHAU */
+.dice-falling-1 {
+  animation: diceFall1 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.dice-falling-2 {
+  animation: diceFall2 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes diceFall1 {
+  0% {
+    transform: 
+      translateY(-200px) translateX(-40px)
+      rotateX(0deg) rotateY(0deg) rotateZ(0deg)
+      scale(1.2);
+    opacity: 0;
+  }
+  20% {
+    transform: 
+      translateY(-150px) translateX(-20px)
+      rotateX(180deg) rotateY(90deg) rotateZ(45deg)
+      scale(1.1);
+  }
+  40% {
+    transform: 
+      translateY(-80px) translateX(-10px)
+      rotateX(360deg) rotateY(180deg) rotateZ(90deg)
+      scale(1);
+  }
+  60% {
+    transform: 
+      translateY(-20px) translateX(-5px)
+      rotateX(540deg) rotateY(270deg) rotateZ(135deg)
+      scale(0.95);
+  }
+  80% {
+    transform: 
+      translateY(5px) translateX(-2px)
+      rotateX(720deg) rotateY(360deg) rotateZ(180deg)
+      scale(1);
+  }
+  100% {
+    transform: 
+      translateY(0px) translateX(0px)
+      rotateX(900deg) rotateY(450deg) rotateZ(225deg)
+      scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes diceFall2 {
+  0% {
+    transform: 
+      translateY(-200px) translateX(40px)
+      rotateX(0deg) rotateY(0deg) rotateZ(0deg)
+      scale(1.2);
+    opacity: 0;
+  }
+  20% {
+    transform: 
+      translateY(-150px) translateX(20px)
+      rotateX(90deg) rotateY(-90deg) rotateZ(-45deg)
+      scale(1.1);
+  }
+  40% {
+    transform: 
+      translateY(-80px) translateX(10px)
+      rotateX(180deg) rotateY(-180deg) rotateZ(-90deg)
+      scale(1);
+  }
+  60% {
+    transform: 
+      translateY(-20px) translateX(5px)
+      rotateX(270deg) rotateY(-270deg) rotateZ(-135deg)
+      scale(0.95);
+  }
+  80% {
+    transform: 
+      translateY(5px) translateX(2px)
+      rotateX(360deg) rotateY(-360deg) rotateZ(-180deg)
+      scale(1);
+  }
+  100% {
+    transform: 
+      translateY(0px) translateX(0px)
+      rotateX(450deg) rotateY(-450deg) rotateZ(-225deg)
+      scale(1);
+    opacity: 1;
+  }
+}
+
+/* ANIMATION LĂN - 2 XÚC XẮC QUAY KHÁC CHIỀU */
+.dice-rolling-1 {
+  animation: diceRoll1 1.2s ease-out infinite;
+}
+
+.dice-rolling-2 {
+  animation: diceRoll2 1.4s ease-out infinite;
+}
+
+@keyframes diceRoll1 {
+  0% {
+    transform: 
+      translateX(0px) translateY(0px)
+      rotateX(900deg) rotateY(450deg) rotateZ(225deg);
+  }
+  15% {
+    transform: 
+      translateX(20px) translateY(-3px)
+      rotateX(1080deg) rotateY(540deg) rotateZ(270deg);
+  }
+  30% {
+    transform: 
+      translateX(-15px) translateY(2px)
+      rotateX(1260deg) rotateY(630deg) rotateZ(315deg);
+  }
+  45% {
+    transform: 
+      translateX(12px) translateY(-2px)
+      rotateX(1440deg) rotateY(720deg) rotateZ(360deg);
+  }
+  60% {
+    transform: 
+      translateX(-18px) translateY(3px)
+      rotateX(1620deg) rotateY(810deg) rotateZ(405deg);
+  }
+  75% {
+    transform: 
+      translateX(8px) translateY(-1px)
+      rotateX(1800deg) rotateY(900deg) rotateZ(450deg);
+  }
+  90% {
+    transform: 
+      translateX(-5px) translateY(1px)
+      rotateX(1980deg) rotateY(990deg) rotateZ(495deg);
+  }
+  100% {
+    transform: 
+      translateX(0px) translateY(0px)
+      rotateX(2160deg) rotateY(1080deg) rotateZ(540deg);
+  }
+}
+
+@keyframes diceRoll2 {
+  0% {
+    transform: 
+      translateX(0px) translateY(0px)
+      rotateX(450deg) rotateY(-450deg) rotateZ(-225deg);
+  }
+  15% {
+    transform: 
+      translateX(-18px) translateY(-2px)
+      rotateX(540deg) rotateY(-540deg) rotateZ(-270deg);
+  }
+  30% {
+    transform: 
+      translateX(12px) translateY(3px)
+      rotateX(630deg) rotateY(-630deg) rotateZ(-315deg);
+  }
+  45% {
+    transform: 
+      translateX(-15px) translateY(-1px)
+      rotateX(720deg) rotateY(-720deg) rotateZ(-360deg);
+  }
+  60% {
+    transform: 
+      translateX(20px) translateY(2px)
+      rotateX(810deg) rotateY(-810deg) rotateZ(-405deg);
+  }
+  75% {
+    transform: 
+      translateX(-10px) translateY(-1px)
+      rotateX(900deg) rotateY(-900deg) rotateZ(-450deg);
+  }
+  90% {
+    transform: 
+      translateX(6px) translateY(1px)
+      rotateX(990deg) rotateY(-990deg) rotateZ(-495deg);
+  }
+  100% {
+    transform: 
+      translateX(0px) translateY(0px)
+      rotateX(1080deg) rotateY(-1080deg) rotateZ(-540deg);
+  }
+}
+
+/* ANIMATION DỪNG */
+.dice-stopping-1, .dice-stopping-2 {
+  animation: diceStop 0.8s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes diceStop {
+  0% {
+    animation-timing-function: linear;
+  }
+  50% {
+    animation-timing-function: ease-in;
+  }
+  100% {
+    animation-timing-function: ease-out;
+  }
+}
+.taixiu-content {
+  background: rgba(26, 26, 26, 0.95);
+  border: 3px solid var(--casino-gold);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.25);
+  max-width: 700px;
+  width: 95%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.taixiu-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.taixiu-content::-webkit-scrollbar-track {
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 3px;
+}
+
+.taixiu-content::-webkit-scrollbar-thumb {
+  background: var(--casino-gold);
+  border-radius: 3px;
+}
+
+/* HEADER - THU GỌN */
+.taixiu-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  position: relative;
+  min-height: 60px;
+}
+
+.taixiu-header h2 {
+  color: var(--casino-gold);
+  font-size: 1.8em;
+  margin-bottom: 5px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.taixiu-subtitle {
+  color: #ccc;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+/* NÚT QUAY LẠI - THU GỌN */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(45deg, var(--casino-gold), var(--casino-orange));
+  color: #1a2a6c !important;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+  border: 2px solid transparent;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.back-btn:hover {
+  transform: translateY(-50%) translateX(-3px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(45deg, var(--casino-orange), var(--casino-gold));
+}
+
+/* GAME AREA - THU GỌN */
+.game-area {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 18px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+/* CHOICE SELECTION - THU GỌN */
+.choice-section {
+  margin-bottom: 18px;
+}
+
+.choice-label {
+  text-align: center;
+  color: var(--casino-gold);
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: block;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.choices-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.choice-btn {
+  flex: 1;
+  padding: 15px 12px;
+  border: 2px solid var(--casino-gold);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ccc;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-height: 80px;
+  justify-content: center;
+}
+
+.choice-btn:hover {
+  background: rgba(255, 215, 0, 0.15);
+  transform: translateY(-3px);
+  border-color: var(--casino-orange);
+}
+
+.choice-btn.active {
+  background: linear-gradient(135deg, var(--casino-gold), var(--casino-orange));
+  color: #1a2a6c;
+  border-color: var(--casino-orange);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.choice-emoji {
+  font-size: 1.6em;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+.choice-text {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.choice-range {
+  font-size: 0.8em;
+  opacity: 0.9;
+  color: #fff;
+}
+
+/* BET AMOUNT - THU GỌN */
+.bet-section {
+  margin-bottom: 18px;
+}
+
+.bet-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--casino-gold);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.bet-input:focus {
+  outline: none;
+  border-color: var(--casino-orange);
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+  transform: scale(1.01);
+  background: rgba(255, 255, 255, 1);
+}
+
+.bet-input::placeholder {
+  color: #999;
+  font-weight: normal;
+}
+
+/* BET BUTTON - THU GỌN */
+.bet-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--casino-gold), var(--casino-orange));
+  border: none;
+  border-radius: 8px;
+  color: #1a2a6c;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bet-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.bet-btn:hover::before {
+  left: 100%;
+}
+
+.bet-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, var(--casino-orange), var(--casino-gold));
+}
+
+.bet-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 3px 8px rgba(255, 215, 0, 0.2);
+}
+
+/* DICE CONTAINER - THU GỌN */
+.dice-roll-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  perspective: 600px;
+  position: relative;
+  min-height: 100px;
+}
+
+.dice-roll-item {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center;
+}
+
+.dice-table {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 4px;
+  background: linear-gradient(90deg, #5D4037, #6D4C41, #5D4037);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* CÁC MẶT XÚC XẮC - THU GỌN */
+.dice-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    inset -2px -2px 4px rgba(0,0,0,0.2),
+    inset 1px 1px 3px rgba(255,255,255,0.8),
+    1px 1px 6px rgba(0,0,0,0.2);
+  backface-visibility: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.dice-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2c3e50;
+  position: absolute;
+  box-shadow: inset -1px -1px 3px rgba(0,0,0,0.5);
+}
+
+.face-1 .dice-dot {
+  background: #e74c3c;
+  width: 14px;
+  height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset -2px -2px 4px rgba(150,0,0,0.7);
+}
+
+/* BỐ TRÍ CHẤM */
+.face-2 .dice-dot:nth-child(1) { top: 20%; left: 20%; }
+.face-2 .dice-dot:nth-child(2) { bottom: 20%; right: 20%; }
+
+.face-3 .dice-dot:nth-child(1) { top: 20%; left: 20%; }
+.face-3 .dice-dot:nth-child(2) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.face-3 .dice-dot:nth-child(3) { bottom: 20%; right: 20%; }
+
+.face-4 .dice-dot:nth-child(1) { top: 20%; left: 20%; }
+.face-4 .dice-dot:nth-child(2) { top: 20%; right: 20%; }
+.face-4 .dice-dot:nth-child(3) { bottom: 20%; left: 20%; }
+.face-4 .dice-dot:nth-child(4) { bottom: 20%; right: 20%; }
+
+.face-5 .dice-dot:nth-child(1) { top: 20%; left: 20%; }
+.face-5 .dice-dot:nth-child(2) { top: 20%; right: 20%; }
+.face-5 .dice-dot:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.face-5 .dice-dot:nth-child(4) { bottom: 20%; left: 20%; }
+.face-5 .dice-dot:nth-child(5) { bottom: 20%; right: 20%; }
+
+.face-6 .dice-dot:nth-child(1) { top: 20%; left: 20%; }
+.face-6 .dice-dot:nth-child(2) { top: 20%; right: 20%; }
+.face-6 .dice-dot:nth-child(3) { top: 50%; left: 20%; transform: translateY(-50%); }
+.face-6 .dice-dot:nth-child(4) { top: 50%; right: 20%; transform: translateY(-50%); }
+.face-6 .dice-dot:nth-child(5) { bottom: 20%; left: 20%; }
+.face-6 .dice-dot:nth-child(6) { bottom: 20%; right: 20%; }
+
+/* VỊ TRÍ CÁC MẶT 3D */
+.face-1 { transform: translateZ(30px); }
+.face-2 { transform: translateZ(-30px) rotateY(180deg); }
+.face-3 { transform: translateX(30px) rotateY(90deg); }
+.face-4 { transform: translateX(-30px) rotateY(-90deg); }
+.face-5 { transform: translateY(-30px) rotateX(90deg); }
+.face-6 { transform: translateY(30px) rotateX(-90deg); }
+
+/* RESULT DISPLAY - THU GỌN */
+.result-section {
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid;
+  animation: resultPopIn 0.4s ease-out;
+  text-align: center;
+}
+
+@keyframes resultPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.result-win {
+  background: rgba(40, 167, 69, 0.2);
+  border-color: #28a745;
+  color: #d4edda;
+}
+
+.result-lose {
+  background: rgba(220, 53, 69, 0.2);
+  border-color: #dc3545;
+  color: #f8d7da;
+}
+
+.result-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.result-balance {
+  font-size: 1.1em;
+  color: var(--casino-gold);
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+
+/* RULES SECTION - THU GỌN */
+.rules-section {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  padding: 18px;
+  margin-top: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.rules-title {
+  color: var(--casino-gold);
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+.rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rules-list li {
+  padding: 6px 0;
+  color: #e0e0e0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.rules-list li:last-child {
+  border-bottom: none;
+}
+
+.rules-list li::before {
+  content: "🎯";
+  font-size: 1em;
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
+}
+
+/* DICE LOADING & RESULT TEXT - THU GỌN */
+.dice-loading {
+  text-align: center;
+  color: #FFD700;
+  font-size: 0.95em;
+  margin: 12px 0;
+  font-style: italic;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+  font-weight: bold;
+}
+
+.dice-result-text {
+  text-align: center;
+  margin: 15px 0;
+  padding: 15px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 2px solid #FFD700;
+  border-radius: 10px;
+  color: #FFD700;
+  font-size: 1em;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.dice-values {
+  font-size: 1.1em;
+  color: white;
+  margin: 4px 0;
+  font-weight: bold;
+}
+
+.dice-total {
+  font-size: 1.3em;
+  color: #FFD700;
+  margin: 8px 0;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}

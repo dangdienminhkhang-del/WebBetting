@@ -1,0 +1,742 @@
+
+.chess-game-premium {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.difficulty-selector button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+  box-shadow: 0 5px 15px rgba(255, 234, 0, 0.2);
+}
+
+.difficulty-selector button.active {
+  box-shadow: 0 0 20px rgba(255, 234, 0, 0.4);
+}
+
+.board-wrapper {
+  transition: 0.3s;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.board-wrapper:hover {
+  border-color: rgba(255, 234, 0, 0.3) !important;
+}
+
+.chessboard-host {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.chess-mini-toast {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5000;
+  background: linear-gradient(180deg, rgba(10, 10, 18, 0.78) 0%, rgba(0, 0, 0, 0.72) 100%);
+  border: 1px solid rgba(255, 234, 0, 0.22);
+  backdrop-filter: blur(12px);
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 0.2px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255, 234, 0, 0.08) inset;
+  animation: toastIn 0.18s ease-out, toastOut 0.25s ease-in 5.75s forwards;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.98); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  to { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.99); }
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.promo-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255,255,255,0.92);
+  padding: 14px 14px;
+  border-radius: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.promo-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 234, 0, 0.35);
+  box-shadow: 0 16px 30px rgba(255, 234, 0, 0.08);
+}
+
+.promo-icon {
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.promo-label {
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+}
+
+.history-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.history-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 234, 0, 0.3);
+  border-radius: 10px;
+}
+
+.action-buttons button {
+  transition: 0.3s;
+}
+
+.action-buttons button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+.turn-indicator span:first-child {
+  box-shadow: 0 0 10px rgba(255, 234, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .chess-main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chess-sidebar {
+    max-width: 550px;
+  }
+}
+
+.chess-setup-wrap {
+  width: 100%;
+  max-width: 900px;
+}
+
+.chess-setup-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.65);
+  backdrop-filter: blur(18px);
+}
+
+.chess-setup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.chess-setup-section {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.chess-setup-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 12px;
+}
+
+.chess-setup-balance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 204, 0, 0.06);
+  border: 1px solid rgba(255, 204, 0, 0.18);
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.chess-setup-balance .label {
+  font-weight: 800;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.85rem;
+}
+
+.chess-setup-balance .value {
+  font-weight: 900;
+  color: var(--casino-gold);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.stake-quick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.stake-quick button {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255,255,255,0.9);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.stake-quick button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 234, 0, 0.35);
+  box-shadow: 0 10px 22px rgba(255, 234, 0, 0.08);
+}
+
+.stake-input {
+  width: 100%;
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 14px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+}
+
+.stake-input:focus {
+  border-color: rgba(255, 234, 0, 0.5);
+  box-shadow: 0 0 20px rgba(255, 234, 0, 0.12);
+}
+
+.chess-setup-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.btn-gold-wide {
+  flex: 1;
+  background: linear-gradient(135deg, #ffea00 0%, #ff9500 100%);
+  border: none;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  color: #000;
+  transition: 0.25s;
+}
+
+.btn-gold-wide:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 16px 30px rgba(255, 234, 0, 0.12);
+}
+
+.btn-ghost-wide {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  color: rgba(255,255,255,0.9);
+  transition: 0.25s;
+}
+
+.btn-ghost-wide:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 234, 0, 0.3);
+}
+/* Fix font tiếng Việt cho các nút */
+.btn-gold-wide, .btn-ghost-wide, .action-buttons button {
+  font-family: 'Inter', 'Noto Sans Vietnamese', 'Segoe UI', sans-serif !important;
+  font-weight: 700;
+}
+.premium-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+.premium-modal-card {
+  background: #0f0f1a;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.btn-close-modal {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+/* ========== THÔNG BÁO ĐẶC BIỆT - ĐỐI THỦ ĐẦU HÀNG / BỎ CUỘC ========== */
+.surrender-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5000;
+  background: rgba(255, 234, 0, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 234, 0, 0.4);
+  border-radius: 999px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 0 20px rgba(255, 234, 0, 0.3), 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: surrenderGlow 0.5s ease-out, surrenderPulse 1.2s ease-in-out 0.3s, fadeOut 0.3s ease-in 3.7s forwards;
+}
+
+@keyframes surrenderGlow {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+    box-shadow: 0 0 0 rgba(255, 234, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.02);
+    box-shadow: 0 0 30px rgba(255, 234, 0, 0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 20px rgba(255, 234, 0, 0.3);
+  }
+}
+
+@keyframes surrenderPulse {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 234, 0, 0.3);
+    border-color: rgba(255, 234, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 234, 0, 0.7);
+    border-color: rgba(255, 234, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 234, 0, 0.3);
+    border-color: rgba(255, 234, 0, 0.4);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+    visibility: hidden;
+  }
+}
+
+.surrender-toast-icon {
+  font-size: 1.6rem;
+  animation: iconBounce 0.6s ease;
+}
+
+@keyframes iconBounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.surrender-toast-message {
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: #ffea00;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.surrender-toast-amount {
+  font-weight: 900;
+  font-size: 1.1rem;
+  background: rgba(255, 234, 0, 0.2);
+  padding: 4px 12px;
+  border-radius: 999px;
+  color: #ffea00;
+  margin-left: 8px;
+  border: 1px solid rgba(255, 234, 0, 0.3);
+}
+
+/* Biến thể cho thông báo thắng do đối thủ bỏ cuộc */
+.victory-toast {
+  background: rgba(0, 255, 157, 0.15);
+  border-color: rgba(0, 255, 157, 0.4);
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+}
+
+.victory-toast .surrender-toast-message {
+  color: #00ff9d;
+}
+
+.victory-toast .surrender-toast-amount {
+  background: rgba(0, 255, 157, 0.2);
+  border-color: rgba(0, 255, 157, 0.3);
+  color: #00ff9d;
+}
+@media (max-width: 820px) {
+  .chess-setup-grid {
+    grid-template-columns: 1fr;
+  }
+  .stake-quick {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* PROMOTION STRIP */
+.promo-strip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 15, 26, 0.95);
+  border: 2px solid #ffea00;
+  border-radius: 16px;
+  display: flex;
+  padding: 12px;
+  gap: 12px;
+  z-index: 2000;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255, 234, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: promoFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.promo-strip--top {
+  top: 15%;
+}
+
+.promo-strip--bottom {
+  top: 85%;
+}
+
+@keyframes promoFadeIn {
+  from { opacity: 0; transform: translate(-50%, -40%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.promo-strip-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 70px;
+  color: #fff;
+}
+
+.promo-strip-btn:hover:not(:disabled) {
+  background: rgba(255, 234, 0, 0.15);
+  border-color: #ffea00;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 234, 0, 0.15);
+}
+
+.promo-strip-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.promo-strip-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.promo-strip-label {
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.promo-strip-cancel {
+  background: rgba(255, 59, 59, 0.1);
+  border: 1px solid rgba(255, 59, 59, 0.3);
+  color: #ff3b3b;
+  border-radius: 12px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.promo-strip-cancel:hover:not(:disabled) {
+  background: rgba(255, 59, 59, 0.25);
+  border-color: #ff3b3b;
+}
+
+/* SEARCHING OVERLAY (Reuse from Caro) */
+.searching-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
+
+.searching-card {
+  background: #1a1a2e;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid #ffea00;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 204, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+}
+
+.searching-loader {
+  width: 80px;
+  height: 80px;
+  border: 4px solid rgba(255, 204, 0, 0.1);
+  border-top: 4px solid #ffea00;
+  border-radius: 50%;
+  margin: 0 auto 25px;
+  animation: spin 1s linear infinite;
+}
+
+.searching-card h2 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.searching-card p {
+  color: #ffea00;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.cancel-search-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.cancel-search-btn:hover {
+  background: rgba(255, 59, 59, 0.1);
+  color: #ff3b3b;
+  border-color: #ff3b3b;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════
+   CHESS & CARO — MOBILE RESPONSIVE
+═══════════════════════════════════════ */
+
+/* Chess 3-col grid → 1 col on mobile */
+@media (max-width: 900px) {
+  .chess-game-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Ẩn cột trái (info) trên mobile, gộp vào dưới bàn cờ */
+  .chess-game-grid .info-column {
+    order: 2;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .chess-game-grid .board-column {
+    order: 1;
+  }
+
+  .chess-game-grid .chess-sidebar {
+    order: 3;
+  }
+
+  /* Bàn cờ full width */
+  .chess-game-grid .board-wrapper {
+    max-width: 100% !important;
+  }
+
+  /* Ẩn lịch sử UCI trên mobile nhỏ */
+  .chess-game-grid .history-card {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .chess-game-grid .info-column {
+    grid-template-columns: 1fr;
+  }
+
+  /* Setup card */
+  .chess-setup-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stake-quick {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Caro 3-col grid → 1 col on mobile */
+@media (max-width: 900px) {
+  /* CaroGame inline grid */
+  .caro-game-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Viewport bàn cờ Caro - mobile: dùng width làm chuẩn */
+  .caro-board-viewport {
+    height: calc(100vw - 24px) !important;
+    width: unset !important;
+    aspect-ratio: 1 / 1 !important;
+    min-height: unset !important;
+    max-height: unset !important;
+  }
+
+  /* Ẩn viewport controls trùng lặp trong CaroBoard */
+  .caro-board-section .viewport-controls {
+    display: none;
+  }
+
+  /* Cột trái và phải của Caro → 2 cột */
+  .caro-game-grid > div:first-child,
+  .caro-game-grid > div:last-child {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+}
+
+  /* Game header compact */
+  .game-header {
+    padding: 6px 10px !important;
+    gap: 4px !important;
+  }
+
+  .game-header h1 {
+    font-size: 1rem !important;
+  }
+
+  .player-info span {
+    font-size: 0.7rem !important;
+    padding: 3px 8px !important;
+  }
+
+/* TaiXiu header mobile */
+@media (max-width: 480px) {
+  .caro-game-grid > div:first-child,
+  .caro-game-grid > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+  .taixiu-lottie-header {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .dice-pair-container {
+    width: min(280px, calc(100vw - 60px)) !important;
+    height: min(220px, calc(100vw - 60px)) !important;
+  }
+}

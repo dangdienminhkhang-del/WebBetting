@@ -1,0 +1,370 @@
+/* PROFILE - dùng chung dashboard-layout từ Home.css */
+
+.profile-loading {
+  padding: 60px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 24px; 
+  
+}
+
+@media (max-width: 900px) {
+  .profile-grid { grid-template-columns: 1fr; }
+}
+
+.profile-panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.panel-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: rgba(143, 141, 141, 0.842);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* INFO ROWS */
+.profile-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pi-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+}
+
+.pi-value {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.pi-value.gold {
+  color: var(--casino-gold);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+}
+
+/* NICKNAME */
+.nickname-block {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nickname-row {
+  display: flex;
+  gap: 10px;
+}
+
+.nickname-input-field {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.nickname-input-field:focus {
+  border-color: var(--casino-gold);
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+}
+
+.btn-update-nick {
+  background: linear-gradient(to right, #ffea00, #ff6a00);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  color: #000;
+  font-weight: 900;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.btn-update-nick:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 106, 0, 0.3);
+}
+
+.btn-update-nick:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.profile-msg {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.profile-msg.success {
+  background: rgba(0, 255, 136, 0.08);
+  color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.profile-msg.error {
+  background: rgba(255, 59, 59, 0.08);
+  color: #ff4d4d;
+  border: 1px solid rgba(255, 59, 59, 0.2);
+}
+
+/* STATS 4-GRID */
+.stats-4-grid,
+.stats-5-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.stats-4-grid { grid-template-columns: repeat(2, 1fr); }
+.stats-5-grid { grid-template-columns: repeat(3, 1fr); }
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 8px 18px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.stat-box:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+.stat-num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.stat-lbl {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 600;
+}
+  
+.stat-box.win .stat-num  { color: #00ff88; }
+.stat-box.lose .stat-num { color: #ff4d4d; }
+.stat-box.draw .stat-num { color: #ff9800; }
+.stat-box.gold-box .stat-num { color: var(--casino-gold); }
+
+/* GAME STATS LIST */
+.game-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.gs-name {
+  flex: 1;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.gs-item {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.gs-item.win  { color: #00ff88; background: rgba(0,255,136,0.08); }
+.gs-item.lose { color: #ff4d4d; background: rgba(255,77,77,0.08); }
+.gs-item.draw { color: #ff9800; background: rgba(255,152,0,0.08); }
+.gs-item.rate { color: var(--casino-gold); background: rgba(255,204,0,0.08); }
+
+/* AVATAR */
+.avatar-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 4px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  border: 3px solid rgba(255, 204, 0, 0.4);
+  transition: border-color 0.2s;
+}
+
+.avatar-wrapper:hover {
+  border-color: var(--casino-gold);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.avatar-wrapper:hover .avatar-overlay {
+  opacity: 1;
+}
+
+.avatar-hint {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+/* AVATAR MENU HOVER */
+.avatar-menu-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.avatar-wrapper:hover .avatar-menu-overlay,
+.avatar-wrapper.menu-open .avatar-menu-overlay {
+  opacity: 1;
+}
+
+.avatar-overlay.static {
+  opacity: 1;
+}
+
+.avatar-menu-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  width: 80px;
+  text-align: center;
+}
+
+.avatar-menu-btn:hover {
+  background: rgba(255, 204, 0, 0.25);
+  border-color: var(--casino-gold);
+  color: var(--casino-gold);
+}
+
+/* XEM ẢNH FULL */
+.avatar-fullview-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+  gap: 16px;
+  animation: cropFadeIn 0.2s ease;
+}
+
+.avatar-fullview-img {
+  width: min(400px, 90vw);
+  height: min(400px, 90vw);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--casino-gold);
+  box-shadow: 0 0 40px rgba(255,204,0,0.3);
+}
+
+.avatar-fullview-hint {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .stats-5-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .game-stat-row {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .gs-item {
+    font-size: 0.75rem;
+    padding: 3px 7px;
+  }
+
+  .profile-panel {
+    padding: 18px 16px;
+  }
+
+  .nickname-row {
+    flex-direction: column;
+  }
+
+  .btn-update-nick {
+    width: 100%;
+  }
+}
