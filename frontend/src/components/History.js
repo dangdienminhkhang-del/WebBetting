@@ -161,7 +161,19 @@ const History = () => {
   return (
     <div className="dashboard-layout">
       {/* SIDEBAR */}
-      <DashboardSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <DashboardSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)}
+        extraMenuGroups={
+          <div className="menu-group">
+            <span className="menu-label">GIAO DỊCH</span>
+            <button className="menu-item deposit-highlight" onClick={() => navigate("/home?deposit=1")}>
+              <span className="menu-icon">💰</span> Nạp KGT
+            </button>
+            <button className="menu-item" onClick={() => navigate("/home?history=1")}>
+              <span className="menu-icon">📜</span> Lịch Sử Giao Dịch
+            </button>
+          </div>
+        }
+      />
 
       {/* MAIN */}
       <main className="dashboard-main">
