@@ -12,7 +12,7 @@ import java.util.Map;
 public class AiChatService {
 
     private static final String SYSTEM_PROMPT =
-        "You are a friendly AI assistant inside a Gomoku (Caro) and Chess betting game. " +
+        "You are a friendly AI assistant inside a Caro (5-in-a-row) and Chess betting game. " +
         "You help players with: chatting casually, suggesting moves, encouraging players. " +
         "Keep responses: short (under 100 words), friendly, a bit playful, use simple language. " +
         "If asked in Vietnamese, reply in Vietnamese.";
@@ -23,6 +23,7 @@ public class AiChatService {
     @Value("${ai.groq.key:}") private String groqKey;
     @Value("${ai.openrouter.key:}") private String openRouterKey;
     @Value("${ai.mistral.key:}") private String mistralKey;
+    @Value("${ai.deepseek.key:}") private String deepseekKey;
 
     private final RestTemplate restTemplate;
 
@@ -35,14 +36,19 @@ public class AiChatService {
     }
 
     public String chat(String userMessage) {
+        // Debug: log key status khi nhận request
+        System.out.println("[AI] Keys - Gemini:" + (geminiKey.isBlank() ? "MISSING" : "OK") 
+            + " DeepSeek:" + (deepseekKey.isBlank() ? "MISSING" : "OK(" + deepseekKey.substring(0,8) + "...)")
+            + " Groq:" + (groqKey.isBlank() ? "MISSING" : "OK")
+            + " Mistral:" + (mistralKey.isBlank() ? "MISSING" : "OK"));
         // Try each provider in order
-        String[] providers = {"gemini", "groq", "openrouter", "mistral"};
+        String[] providers = {"gemini", "deepseek", "groq", "mistral"};
         for (String provider : providers) {
             try {
                 String reply = switch (provider) {
                     case "gemini"     -> callGemini(userMessage);
+                    case "deepseek"   -> callDeepSeek(userMessage);
                     case "groq"       -> callGroq(userMessage);
-                    case "openrouter" -> callOpenRouter(userMessage);
                     case "mistral"    -> callMistral(userMessage);
                     default           -> null;
                 };
@@ -64,16 +70,13 @@ public class AiChatService {
             System.out.println("[AI] Gemini key not configured, skipping");
             return null;
         }
-        // Thử lần lượt các model Gemini - dùng v1beta cho 1.5-flash
-        String[][] models = {
-            {"gemini-1.5-flash", "v1beta"},
-            {"gemini-1.5-pro",   "v1beta"},
-            {"gemini-2.0-flash", "v1"},
-        };
-        for (String[] m : models) {
+        // Tất cả model đều dùng v1beta — endpoint ổn định nhất
+        String[] models = {"gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"};
+        for (String model : models) {
             try {
-                String url = "https://generativelanguage.googleapis.com/" + m[1] + "/models/" + m[0] + ":generateContent?key=" + geminiKey;
-                System.out.println("[AI] Trying Gemini model: " + m[0] + " via " + m[1]);
+                String url = "https://generativelanguage.googleapis.com/v1beta/models/"
+                           + model + ":generateContent?key=" + geminiKey;
+                System.out.println("[AI] Trying Gemini model: " + model);
 
                 Map<String, Object> body = Map.of(
                     "contents", List.of(
@@ -86,21 +89,21 @@ public class AiChatService {
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
-                ResponseEntity<Map> res = restTemplate.postForEntity(url, new HttpEntity<>(body, headers), Map.class);
+                ResponseEntity<Map> res = restTemplate.postForEntity(
+                    url, new HttpEntity<>(body, headers), Map.class);
                 String result = extractGemini(res.getBody());
                 if (result != null && !result.isBlank()) {
-                    System.out.println("[AI] Gemini success with model: " + m[0]);
+                    System.out.println("[AI] Gemini success with model: " + model);
                     return result;
                 }
             } catch (org.springframework.web.client.HttpClientErrorException e) {
-                // 429 = quota hết → skip Gemini hoàn toàn
                 if (e.getStatusCode().value() == 429) {
-                    System.out.println("[AI] Gemini quota exhausted (429), skipping all Gemini models");
+                    System.out.println("[AI] Gemini quota exhausted (429), skipping");
                     return null;
                 }
-                System.out.println("[AI] Gemini model " + m[0] + " failed: " + e.getMessage().substring(0, Math.min(80, e.getMessage().length())));
+                System.out.println("[AI] Gemini " + model + " failed: " + e.getStatusCode() + " - " + e.getResponseBodyAsString().substring(0, Math.min(120, e.getResponseBodyAsString().length())));
             } catch (Exception e) {
-                System.out.println("[AI] Gemini model " + m[0] + " failed: " + e.getMessage().substring(0, Math.min(80, e.getMessage().length())));
+                System.out.println("[AI] Gemini " + model + " failed: " + e.getMessage());
             }
         }
         return null;
@@ -160,6 +163,23 @@ public class AiChatService {
             "max_tokens", 200
         );
         ResponseEntity<Map> res = restTemplate.postForEntity(url, entity(body, "Bearer " + openRouterKey), Map.class);
+        return extractOpenAIStyle(res.getBody());
+    }
+
+    // ── DeepSeek ──
+    private String callDeepSeek(String message) {
+        if (deepseekKey == null || deepseekKey.isBlank()) return null;
+        System.out.println("[AI] Calling DeepSeek");
+        String url = "https://api.deepseek.com/v1/chat/completions";
+        Map<String, Object> body = Map.of(
+            "model", "deepseek-chat",
+            "messages", List.of(
+                Map.of("role", "system", "content", SYSTEM_PROMPT),
+                Map.of("role", "user", "content", message)
+            ),
+            "max_tokens", 200
+        );
+        ResponseEntity<Map> res = restTemplate.postForEntity(url, entity(body, "Bearer " + deepseekKey), Map.class);
         return extractOpenAIStyle(res.getBody());
     }
 
