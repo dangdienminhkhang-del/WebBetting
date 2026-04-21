@@ -28,7 +28,7 @@ public class User {
     private Long balance = 1000L;
 
     @Column(nullable = false)
-    private String role = "USER"; // USER | ADMIN
+    private String role = "USER"; 
 
     @Column(nullable = false)
     private boolean isActive = true;
@@ -41,7 +41,7 @@ public class User {
 
     private LocalDateTime lockedAt;
 
-    @Column(columnDefinition = "MEDIUMTEXT")
+    @Column(columnDefinition = "TEXT")
     private String avatarUrl;
 
     @Column(name = "provider_key", unique = true)
