@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import API from "../services/api";
 import AiChatWidget from "./AiChatWidget";
 import DashboardSidebar from "./DashboardSidebar";
@@ -26,9 +26,23 @@ function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tappedCard, setTappedCard] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Nhạc nền Home (casino lounge)
   useBgMusic('home');
+
+  // Mở modal từ query param (khi navigate từ sidebar trang khác)
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('deposit') === '1') {
+      setShowDepositModal(true);
+      navigate('/home', { replace: true });
+    }
+    if (params.get('history') === '1') {
+      handleOpenHistory();
+      navigate('/home', { replace: true });
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));

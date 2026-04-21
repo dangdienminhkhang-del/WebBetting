@@ -54,6 +54,16 @@ export default function DashboardSidebar({ open, onClose, extraMenuGroups }) {
             </button>
           </div>
 
+          <div className="menu-group">
+            <span className="menu-label">GIAO DỊCH</span>
+            <button className="menu-item deposit-highlight" onClick={() => navigate("/home?deposit=1")}>
+              <span className="menu-icon">💰</span> Nạp KGT
+            </button>
+            <button className="menu-item" onClick={() => navigate("/home?history=1")}>
+              <span className="menu-icon">📜</span> Lịch Sử Giao Dịch
+            </button>
+          </div>
+
           {extraMenuGroups}
 
           <div className="menu-group">
