@@ -1607,6 +1607,7 @@
   .caro-game-layout {
     flex-direction: column;
     align-items: center;
+    gap: 8px;
   }
 
   .caro-sidebar-left,
@@ -1636,8 +1637,48 @@
 }
 
 @media (max-width: 480px) {
+  .caro-game {
+    padding: 4px 4px 8px;
+  }
+
+  /* Ẩn sidebar trên mobile nhỏ, chỉ giữ thông tin quan trọng */
+  .caro-sidebar-left {
+    order: 2; /* xuống dưới bàn cờ */
+  }
+
+  .caro-sidebar-right {
+    order: 3;
+  }
+
+  .caro-board-center {
+    order: 1;
+  }
+
   .caro-sidebar-left > *,
   .caro-sidebar-right > * {
-    flex: 1 1 100%;
+    flex: 1 1 calc(50% - 4px);
+    min-width: 120px;
+  }
+
+  /* Ẩn bớt card ít quan trọng */
+  .caro-sidebar-left .status-card:nth-child(n+4),
+  .caro-sidebar-right .status-card:nth-child(n+3) {
+    display: none;
+  }
+
+  .caro-board-viewport {
+    height: calc(100vw - 8px) !important;
+  }
+
+  /* Header nhỏ lại */
+  .chess-header h1 {
+    font-size: 1rem !important;
+  }
+
+  /* Status card compact */
+  .caro-sidebar-left .status-card,
+  .caro-sidebar-right .status-card {
+    padding: 10px !important;
+    font-size: 0.75rem;
   }
 }

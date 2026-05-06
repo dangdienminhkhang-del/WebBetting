@@ -740,3 +740,258 @@
     height: min(220px, calc(100vw - 60px)) !important;
   }
 }
+
+/* ═══════════════════════════════════════
+   MOBILE < 480px — FULL RESPONSIVE FIX
+═══════════════════════════════════════ */
+
+/* ── Chess setup ── */
+@media (max-width: 480px) {
+  .chess-game-premium {
+    padding: 8px 8px 16px !important;
+  }
+
+  .chess-setup-wrap {
+    width: 100%;
+    padding: 0;
+  }
+
+  .chess-setup-card {
+    padding: 14px 12px !important;
+    border-radius: 16px !important;
+  }
+
+  .chess-setup-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .chess-setup-section {
+    padding: 12px !important;
+  }
+
+  .chess-setup-title {
+    font-size: 0.78rem !important;
+  }
+
+  .chess-setup-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .btn-gold-wide,
+  .btn-ghost-wide {
+    padding: 12px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .stake-quick {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .stake-input {
+    padding: 10px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Chess play phase */
+  .chess-game-grid {
+    gap: 8px !important;
+    padding: 0 4px !important;
+  }
+
+  .chess-game-grid .info-column {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+  }
+
+  .chess-game-grid .info-column .status-card {
+    padding: 10px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .chess-game-grid .chess-sidebar {
+    display: none !important; /* Ẩn sidebar phải trên mobile nhỏ */
+  }
+
+  /* Modal */
+  .premium-modal-card {
+    width: calc(100vw - 16px) !important;
+    max-width: 100% !important;
+    border-radius: 16px !important;
+  }
+
+  .modal-header h3 {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ── TaiXiu ── */
+@media (max-width: 480px) {
+  .taixiu-lottie-container {
+    padding: 6px !important;
+    align-items: flex-start !important;
+  }
+
+  .taixiu-lottie-content {
+    padding: 12px !important;
+    border-radius: 14px !important;
+    border-width: 2px !important;
+  }
+
+  .taixiu-lottie-header {
+    flex-direction: column !important;
+    gap: 6px !important;
+    text-align: center !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .taixiu-lottie-header h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .balance-display {
+    font-size: 0.8rem !important;
+  }
+
+  /* Form layout 1 cột */
+  .taixiu-form-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Choices */
+  .choices-container-lottie {
+    gap: 8px !important;
+  }
+
+  .choice-btn-lottie {
+    padding: 10px 8px !important;
+    font-size: 0.85rem !important;
+    min-width: unset !important;
+  }
+
+  /* Quick amounts 3 cột */
+  .quick-amounts {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .quick-amount-btn {
+    padding: 6px 2px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Dice container */
+  .dice-pair-container {
+    width: min(260px, calc(100vw - 40px)) !important;
+    height: min(200px, calc(100vw - 40px)) !important;
+  }
+
+  /* Bet button */
+  .bet-btn-lottie {
+    padding: 12px !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Result */
+  .result-display-lottie {
+    padding: 12px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ── Searching overlay mobile ── */
+@media (max-width: 480px) {
+  .searching-card {
+    padding: 24px 20px !important;
+    width: calc(100vw - 32px) !important;
+  }
+
+  .searching-card h2 {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* ── CaroBetPanel mobile ── */
+@media (max-width: 480px) {
+  .chess-setup-wrap {
+    padding: 0 !important;
+  }
+
+  .chess-setup-card {
+    padding: 12px 10px !important;
+    border-radius: 14px !important;
+  }
+
+  .chess-setup-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    margin-top: 10px !important;
+  }
+
+  .chess-setup-section {
+    padding: 10px !important;
+    border-radius: 12px !important;
+  }
+
+  .chess-setup-title {
+    font-size: 0.75rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .chess-setup-balance {
+    padding: 8px 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .chess-setup-balance .label,
+  .chess-setup-balance .value {
+    font-size: 0.82rem !important;
+  }
+
+  .chess-setup-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-top: 10px !important;
+  }
+
+  .btn-gold-wide,
+  .btn-ghost-wide {
+    padding: 11px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .stake-quick {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 5px !important;
+    margin-top: 8px !important;
+  }
+
+  .stake-quick button {
+    padding: 7px 4px !important;
+    font-size: 0.72rem !important;
+    border-radius: 8px !important;
+  }
+
+  .stake-input {
+    padding: 10px !important;
+    font-size: 0.88rem !important;
+    margin-top: 8px !important;
+  }
+
+  /* Difficulty buttons */
+  .difficulty-selector {
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .difficulty-selector button {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+    border-radius: 20px !important;
+  }
+}
