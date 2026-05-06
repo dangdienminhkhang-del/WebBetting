@@ -38,6 +38,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 // Public endpoints
+                .requestMatchers("/**").permitAll()   
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/auth/oauth2/**").permitAll()
                 .requestMatchers("/api/users/register").permitAll()
@@ -62,7 +63,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/caro/**").authenticated()
                 .requestMatchers("/api/chess/**").authenticated()
                 .requestMatchers("/api/pvp/**").authenticated()
-                .requestMatchers("/api/chat/**").authenticated()                
+                .requestMatchers("/api/chat/**").authenticated()    
+                         
                 .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -83,7 +85,8 @@ public class SecurityConfig {
             configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:3000",
                 "http://localhost:3001",
-                "http://127.0.0.1:3000"
+                "http://127.0.0.1:3000",
+                "https://*.ngrok-free.dev"
             ));
         }
         
